@@ -1,7 +1,8 @@
-📘 DSA Practice
+📘 DSA Practice - 
 This repository contains my solutions to various Data Structures and Algorithms problems, written in C++.
 
-🚀 Highlights
+🚀 Highlights:
+
 🔹 Brute-force and optimal solutions
 
 🔹 Categorized by topic: Arrays, Strings, Trees, etc.
