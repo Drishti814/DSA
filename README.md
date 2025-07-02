@@ -18,6 +18,6 @@ IDE: VS Code (with custom tasks.json)
 
 OS: macOS
 
-🧠 Goal
+🧠 Goal:
 
 Improve problem-solving skills for coding interviews and competitive programming.
