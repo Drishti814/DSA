@@ -33,6 +33,8 @@ void sortArray(vector<int>& a) {
     }
 
 //dutch national flag algorithm
+//O(n) TC
+//O(1) SC
 void sortArray012(vector<int>& a, int n){
     int low = 0,mid = 0,high = n-1;
     while(mid <= high){

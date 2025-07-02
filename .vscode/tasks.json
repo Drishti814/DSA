@@ -16,15 +16,30 @@
                 "isDefault": false
             }
         },
-        {
-            "label": "compile and run with input/output files",
-            "type": "shell",
-            "command": "/opt/homebrew/bin/g++-15 -std=c++17 -o ${fileBasenameNoExtension} ${file} && ./${fileBasenameNoExtension} < input.txt > output.txt",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
+        {   
+        "label": "compile, run, and delete output file",
+        "type": "shell",
+        "command": "/opt/homebrew/bin/g++-15",
+        "args": [
+            "-std=c++17",
+            "-o",
+            "${fileBasenameNoExtension}",
+            "${file}",
+            "&&",
+            "./${fileBasenameNoExtension}",
+            "<",
+            "input.txt",
+            ">",
+            "output.txt",
+            "&&",
+            "rm",
+            "${fileBasenameNoExtension}"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "problemMatcher": []
         },
         {
             "type": "cppbuild",
