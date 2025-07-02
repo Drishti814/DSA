@@ -5,6 +5,7 @@
 #include<climits>
 using namespace std;
 
+//O(3n) TC
 vector<int> nextPermutation(vector<int> &a,int n){
     int x = -1;
     for(int i = n-2;i>=0;i--){
