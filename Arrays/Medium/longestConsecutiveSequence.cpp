@@ -53,6 +53,8 @@ int longestSequenceBetter(vector<int> &a,int n){
 }
 
 //optimal
+//O(3n) TC
+//O(n) SC
 int longestSequenceOptimal(vector<int> &a,int n){
     if(n==0) return 0;
     unordered_set<int> st;
