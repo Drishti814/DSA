@@ -6,6 +6,8 @@
 using namespace std;
 
 //brute force
+//O(n^2) TC
+//O(n^2) SC
 vector<vector<int>> rotateMatrix(vector<vector<int>> & matrix, int n){
     vector<vector<int>> a(n,vector<int> (n,0));
     for(int i = 0;i<n;i++){
