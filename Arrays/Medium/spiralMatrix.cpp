@@ -5,6 +5,8 @@
 #include<climits>
 using namespace std;
 
+//TC O(n^2)
+//SC O(n^2)
 vector<int> spiralMatrix(vector<vector<int>> & matrix){
     int m = matrix.size();
     int n = matrix[0].size();
@@ -49,8 +51,6 @@ int main(){
         }
     }
     vector<int> ans = spiralMatrix(matrix);
-    //vector<vector<int>> ans = rotateMatrixOptimal(matrix,n);
-    //vector<vector<int>> ans = rotateMatrixNew(matrix,n);
     for(auto it : ans){
         cout << it <<" ";
         
