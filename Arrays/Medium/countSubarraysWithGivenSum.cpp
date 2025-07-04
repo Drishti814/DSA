@@ -5,6 +5,7 @@ using namespace std;
 
 //brute force -- time limit exceeded(TLE) in leetcode
 //TC O(n^3)
+//SC O(1)
 int countSubarray(vector<int> &a, int n, int k){
     int count = 0;
     for(int i = 0;i<n;i++){
@@ -12,15 +13,16 @@ int countSubarray(vector<int> &a, int n, int k){
             int sum = 0;
             for(int x = i;x<=j;x++){
                 sum += a[x];
-                if(sum==k) count++;
             }
+            if(sum==k) count++;
         }
     }
     return count;
 }
 
 //better -- time limit exceeded(TLE)
-//O(n^2)
+//TC O(n^2)
+//SC O(1)
 int countSubarrayBetter(vector<int> & a, int n, int k){
     int count = 0;
     for(int i = 0;i<n;i++){
