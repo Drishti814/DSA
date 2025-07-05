@@ -30,15 +30,15 @@ vector<vector<int>> threeSum(vector<int> &num, int n){
 vector<vector<int>> threeSumBetter(vector<int> &num, int n){
     set<vector<int>> st;
     for(int i = 0;i<n;i++){
-        set<int> hashMap;
+        set<int> hashSet;
         for(int j = i+1;j<n;j++){
             int third = -(num[i]+num[j]);
-            if(hashMap.find(third)!=hashMap.end()){
+            if(hashSet.find(third)!=hashSet.end()){
                 vector<int> temp = {num[i],num[j],third};
                 sort(temp.begin(),temp.end());
                 st.insert(temp);
             }
-            hashMap.insert(num[j]);
+            hashSet.insert(num[j]);
         }
     }
     vector<vector<int>> ans(st.begin(),st.end());
