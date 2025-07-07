@@ -3,10 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-//only applicable in sorted search space
 //time complexity - O(logn)
-//overflow case if low = high = INT_MAX then mid = (INT_MAX+INT_MAX)/2 which exceeds int
-//use long long low,high or take mid = low + (high - low)/2
 
 //Iterative Approach
 int lowerBoundIterative(vector<int> &a, int n, int target){
@@ -51,6 +48,7 @@ int main(){
     //int index = lowerBoundIterative(a,n,target);
     //int index = lowerBoundRecursive(a,0,n-1,target);
     //cout << index;
+
     //direct function
     auto lb = lower_bound(a.begin(),a.end(),target);
     if(lb != a.end()){
