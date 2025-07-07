@@ -46,12 +46,12 @@ int main(){
     int target;
     cin >> target;
     //int index = lowerBoundIterative(a,n,target);
-    int index = lowerBoundRecursive(a,0,n-1,target);
-    cout << index;
+    //int index = lowerBoundRecursive(a,0,n-1,target);
+    //cout << index;
 
     //direct function
-    // auto ub = upper_bound(a.begin(),a.end(),target);
-    // if(ub != a.end()){
-    //     cout << ub - a.begin();
-    // }
+    auto ub = upper_bound(a.begin(),a.end(),target);
+    if(ub != a.end()){
+        cout << ub - a.begin();
+    }
 }
