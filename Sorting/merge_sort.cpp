@@ -5,7 +5,7 @@ using namespace std;
 //O(n*logn) base 2 worst case
 //O(n) space complexity
 
-void merged(vector<int> &arr, int low, int mid, int high){
+void merge(vector<int> &arr, int low, int mid, int high){
     int n = sizeof(arr);
     vector<int> temp;
     int left = low;
@@ -38,7 +38,7 @@ void merge_sort(vector<int> &arr, int low, int high){
         int mid = (low+high)/2;
         merge_sort(arr,low,mid);
         merge_sort(arr,mid+1,high);
-        merged(arr,low,mid,high);
+        merge(arr,low,mid,high);
 }
 
 int main(){

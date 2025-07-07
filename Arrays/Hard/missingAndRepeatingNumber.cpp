@@ -95,14 +95,12 @@ vector<int> missingAndRepeatingOptimal2(vector<int> &arr,int n){
             zero = zero ^ i;
         }
     }
-    int missing = one;
-    int repeating = zero;
     int cnt = 0;
     for(int i = 0;i<n;i++){
         if(arr[i]==zero) cnt++;
     }
-    if(cnt==2)  return {repeating,missing};
-    else return {missing, repeating};
+    if(cnt==2)  return {one,zero};
+    else return {zero,one};
 }
 
 int main(){
