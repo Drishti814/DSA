@@ -3,6 +3,7 @@
 #include<algorithm>
 using namespace std;
 
+//opposite of lower bound
 int floorValue(vector<int> &a, int n, int target){
     int ans = n;
     int low = 0;
@@ -18,6 +19,7 @@ int floorValue(vector<int> &a, int n, int target){
     return a[ans];
 }
 
+//lower bound
 int ceilValue(vector<int> &a, int n, int target){
     int ans = n;
     int low = 0;

@@ -7,6 +7,7 @@ using namespace std;
 
 //time complexity - O(logn)
 
+//lower bound
 int insertPosition(vector<int> &a, int n, int target){
     int ans = n;
     int low = 0;
