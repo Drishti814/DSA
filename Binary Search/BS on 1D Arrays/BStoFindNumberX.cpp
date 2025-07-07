@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+//brute force - linear
+//optimal - BS
 //only applicable in sorted search space
 //time complexity - O(logn)
 //overflow case if low = high = INT_MAX then mid = (INT_MAX+INT_MAX)/2 which exceeds int

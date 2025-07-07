@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 //only applicable in sorted search space
@@ -24,18 +25,17 @@ int lowerBoundIterative(vector<int> &a, int n, int target){
 }
 
 //Recusive Approach
-int binarySearchRecursive(vector<int> &a, int low, int high, int target){
+int lowerBoundRecursive(vector<int> &a, int low, int high, int target){
     int ans = a.size();
     if(low > high) return ans;
     int mid = (low + high)/2;
     if(a[mid] >= target){
         ans = mid;
-        binarySearchRecursive(a,low,mid,target);
+        return min(mid,lowerBoundRecursive(a,low,mid-1,target));
     }
-    else binarySearchRecursive(a,mid+1,high,target);
+    else return lowerBoundRecursive(a,mid+1,high,target);
     return ans;
 }
-
 
 int main(){
     int n;
@@ -49,6 +49,11 @@ int main(){
     int target;
     cin >> target;
     //int index = lowerBoundIterative(a,n,target);
-    int index = binarySearchRecursive(a,0,n-1,target);
-    cout << index;
+    //int index = lowerBoundRecursive(a,0,n-1,target);
+    //cout << index;
+    //direct function
+    auto lb = lower_bound(a.begin(),a.end(),target);
+    if(lb != a.end()){
+        cout << lb - a.begin();
+    }
 }
