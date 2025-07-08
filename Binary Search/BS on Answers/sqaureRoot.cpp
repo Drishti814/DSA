@@ -20,7 +20,7 @@ int sqrt(int num){
 int sqrtOptimal(int num){
     int ans = 0;
     int low = 0;
-    int high = num-1;
+    int high = num;
     while(low<=high){
         long long mid = (low+high)/2;
         if(mid*mid<=num){
