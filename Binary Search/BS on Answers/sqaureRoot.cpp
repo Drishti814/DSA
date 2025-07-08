@@ -5,7 +5,7 @@
 using namespace std;
 
 //brute force
-//O(n)
+//O(num)
 int sqrt(int num){
     int ans = 0;
     for(int i = 0;i<=num;i++){
@@ -16,7 +16,7 @@ int sqrt(int num){
 }
 
 //optimal
-//O(logn)
+//O(log(num))
 int sqrtOptimal(int num){
     int ans = 0;
     int low = 0;
