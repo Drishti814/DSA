@@ -3,8 +3,9 @@
 #include<algorithm>
 using namespace std;
 
-//without duplicates
-//TC O(logn)
+//with duplicates
+//TC O(logn) best and avg case
+//TC O(n/2) worst case
 int searchElement(vector<int> &a, int n, int target){
     int low = 0;
     int high = n-1;
@@ -12,6 +13,11 @@ int searchElement(vector<int> &a, int n, int target){
         int mid = (low + high)/2;
         if(a[mid] == target){
         return mid;
+        }
+        if(a[low]==a[mid] && a[mid]==a[high]){
+            low++;
+            high--;
+            continue;
         }
         if(a[low] <= a[mid]){
             if(a[low] <= target && a[mid] >= target){
