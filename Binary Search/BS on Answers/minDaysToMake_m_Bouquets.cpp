@@ -21,7 +21,6 @@ int findMax(vector<int> &a,int n){
     return maxi;
 }
 
-//brute force
 bool countB(vector<int> &a,int n, int day, int m, int k){
     int cnt = 0;
     int numOfB = 0;
@@ -39,6 +38,8 @@ bool countB(vector<int> &a,int n, int day, int m, int k){
     else return false;
 }
 
+//brute force
+//TC O(n*(max-min+1))
 int minDays(vector<int> &a, int n, int m, int k){
     if(n < m*k) return -1;
     int mini = findMin(a,n);
@@ -47,6 +48,26 @@ int minDays(vector<int> &a, int n, int m, int k){
         if(countB(a,n,i,m,k)==true) return i;
     }
     return -1;
+}
+
+//optimal
+//TC O(n*log(max-min+1))
+int minDaysOptimal(vector<int> &a, int n, int m, int k){
+    if(n < m*k) return -1;
+    int mini = findMin(a,n);
+    int maxi = findMax(a,n);
+    int low = mini;
+    int high = maxi;
+    int ans = -1;
+    while(low<=high){
+        int mid = (low+high)/2;
+        if(countB(a,n,mid,m,k)==true){
+            ans = mid;
+            high = mid - 1;
+        } 
+        else low = mid + 1;
+    }
+    return ans;
 }
 
 int main(){
@@ -61,6 +82,7 @@ int main(){
     int m,k;
     cin >> m;
     cin >> k;
-    int ans = minDays(a,n,m,k);
+    //int ans = minDays(a,n,m,k);
+    int ans = minDaysOptimal(a,n,m,k);
     cout << ans;
 }
