@@ -5,7 +5,7 @@
 using namespace std;
 
 //brute force
-//O(n)
+//TC O(n)
 int singleElement(vector<int> &a,int n){
     for(int i = 0;i<n;i++){
         if(i==0){
@@ -22,7 +22,7 @@ int singleElement(vector<int> &a,int n){
 }
 
 //optimal
-//O(logn)
+//TC O(logn)
 int singleElementOptimal(vector<int> &a,int n){
     if(n==1) return a[0];
     if(a[0]!=a[1]) return a[0];

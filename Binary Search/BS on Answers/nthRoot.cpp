@@ -16,7 +16,7 @@ int powNum(int i, int num, int n){
 }
 
 //brute force
-//O(num)
+//TC O(num)
 int nthRoot(int num,int n){
     int ans = -1;
     for(int i = 0;i<=num;i++){
@@ -27,7 +27,7 @@ int nthRoot(int num,int n){
 }
 
 //optimal
-//O(log(num))
+//TC O(log(num))
 int nthRootOptimal(int num,int n){
     int ans = -1;
     int low = 0;

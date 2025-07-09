@@ -5,7 +5,7 @@
 using namespace std;
 
 //brute force
-//O(n)
+//TC O(n)
 int peakElement(vector<int> &a,int n){
     for(int i = 0;i<n;i++){
         if((i==0 || a[i]>a[i-1]) && (i==n-1 || a[i]>a[i+1])){
@@ -16,7 +16,7 @@ int peakElement(vector<int> &a,int n){
 }
 
 //optimal
-//O(logn)
+//TC O(logn)
 int peakElementOptimal(vector<int> &a,int n){
     if(n==1) return 0;
     if(a[0] > a[1]) return 0;

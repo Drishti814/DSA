@@ -22,7 +22,7 @@ long long totalHours(vector<int> &a,int n, int hourly){
 }
 
 //brute force
-//O(n * max(a))
+//TC O(n * max(a))
 int requiredTime(vector<int> &a,int n, int h){
     int maxi = findMax(a,n);
     int reqTime = INT_MAX;
@@ -34,7 +34,7 @@ int requiredTime(vector<int> &a,int n, int h){
 }
 
 //optimal
-//O(n * log(max(a)))
+//TC O(n * log(max(a)))
 int requiredTimeOptimal(vector<int> &a,int n, int h){
     int maxi = findMax(a,n);
     int low = 1;
