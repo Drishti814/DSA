@@ -2,7 +2,7 @@
 #include<deque>
 using namespace std;
 
-//similarto list and vector
+//similar to list and vector
 
 int main(){
     deque<int> d;              //d = {}
