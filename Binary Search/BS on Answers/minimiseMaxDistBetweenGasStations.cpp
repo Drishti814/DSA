@@ -31,6 +31,9 @@ long double gasStations(vector<int> &a, int n, int k){
     return ans;
 }
 
+//better
+//TC O(nlogn + klogn)
+//SC O(n-1)+O(n-1)
 long double gasStationsBetter(vector<int> &a, int n, int k){
     vector<int> howMany(n-1,1);
     priority_queue<pair<long double,int>> pq;
@@ -49,6 +52,38 @@ long double gasStationsBetter(vector<int> &a, int n, int k){
     return pq.top().first;
 }
 
+long double numberOfGasStations(vector<int> &a, int n, long double dist){
+    int cnt = 0;
+    for(int i = 0;i<n-1;i++){
+        int numInBetween = (a[i+1]-a[i])/dist;
+        if(numInBetween*dist == a[i+1]-a[i]){
+            numInBetween--;
+        }
+        cnt+=numInBetween;
+    }
+    return cnt;
+}
+
+//optimal
+//TC O(nlog(len) + n) len = length of the ans space
+//SC O(1)
+long double gasStationsOptimal(vector<int> &a, int n, int k){
+    long double low = 0;
+    long double high = 0;
+    for(int i = 0;i<n-1;i++){
+        high = max(high,(long double)a[i+1]-a[i]);
+    }
+    long double diff = 1e-6;
+    while(high - low > diff){
+        long double mid = (low+high)/2.0;
+        if(numberOfGasStations(a,n,mid)>k){
+            low = mid;
+        }
+        else high = mid;
+    }
+    return high;
+}
+
 int main(){
     int n;
     cin >> n;
@@ -61,6 +96,7 @@ int main(){
     int k;
     cin >> k;
     //long double ans = gasStations(a,n,k);
-    long double ans = gasStationsBetter(a,n,k);
+    //long double ans = gasStationsBetter(a,n,k);
+    long double ans = gasStationsOptimal(a,n,k);
     cout << ans;
 }
