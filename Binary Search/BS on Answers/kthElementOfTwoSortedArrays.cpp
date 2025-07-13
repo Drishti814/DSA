@@ -74,7 +74,7 @@ double kthElArraysBetter(vector<int>a1, int n1, vector<int>a2, int n2, int k ){
 double kthElArraysOptimal(vector<int>a1, int n1, vector<int>a2, int n2, int k ){
     if(n1>n2) return kthElArraysOptimal(a2,n2,a1,n1,k);
     int n3 = n1+n2;
-    int low = max(0,k-n1);
+    int low = max(0,k-n2);
     int high = min(n1,k);
     int left = k;
     while(low<=high){
