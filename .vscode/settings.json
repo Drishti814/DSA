@@ -10,6 +10,7 @@
         "string_view": "cpp",
         "vector": "cpp",
         "set": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "ios": "cpp"
     }
 }
