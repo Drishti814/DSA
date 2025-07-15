@@ -16,7 +16,7 @@ struct Node{
 
 //optimal
 //TC O(n)
-//SC O(n)
+//SC O(n) for queue + O(n) for result vector
 vector<vector<int>> levelOrder(Node* root){
     vector<vector<int>> ans;
     if(root==nullptr) return ans;
