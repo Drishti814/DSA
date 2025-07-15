@@ -17,17 +17,17 @@ struct Node{
 //optimal
 //TC O(n)
 //SC O(n) for stack ~ O(H) H=height of BT
-vector<int> preorderIterative(Node* root){
+vector<int> inorderIterative(Node* root){
     vector<int> ans;
     if(root==nullptr) return ans;
     stack<Node*> st;
     st.push(root);
     while(!st.empty()){
         root = st.top();
+        if(root->left!=nullptr) st.push(root->left);
         ans.push_back(root->data);
         st.pop();
         if(root->right!=nullptr) st.push(root->right);
-        if(root->left!=nullptr) st.push(root->left);
     }
     return ans;
 }
@@ -40,7 +40,7 @@ int main(){
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-    vector<int> ans = preorderIterative(root);
+    vector<int> ans = inorderIterative(root);
     for(auto it : ans){
             cout << it << " ";
     }
@@ -53,4 +53,4 @@ int main(){
 //    / \     / \
 //   /   \   /   \ 
 //  4     5 6     7
-// preorder - 1 2 4 5 3 6 7
+// levelorder - 1 2 4 5 3 6 7
