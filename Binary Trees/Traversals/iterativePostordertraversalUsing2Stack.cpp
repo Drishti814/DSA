@@ -17,23 +17,22 @@ struct Node{
 //optimal
 //TC O(n)
 //SC O(n) for stack ~ O(H) H=height of BT
-vector<int> inorderIterative(Node* root){
+vector<int> postorderIterative(Node* root){
     vector<int> ans;
     if(root==nullptr) return ans;
-    stack<Node*> st;
-    Node* node = root;
-    while(true){
-        if(node!=nullptr){
-            st.push(node);
-           node  = node->left;
-        }
-        else{
-            if(st.empty()==true) break;
-            node = st.top();
-            st.pop();
-            ans.push_back(node->data);
-            node = node->right;
-        }
+    stack<Node*> st1;
+    stack<Node*> st2;
+    st1.push(root);
+    while(!st1.empty()){
+        root = st1.top();
+        st1.pop();
+        st2.push(root);
+        if(root->left != nullptr) st1.push(root->left);
+        if(root->right != nullptr) st1.push(root->right);
+    }
+    while(!st2.empty()){
+        ans.push_back(st2.top()->data);
+        st2.pop();
     }
     return ans;
 }
@@ -46,7 +45,7 @@ int main(){
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-    vector<int> ans = inorderIterative(root);
+    vector<int> ans = postorderIterative(root);
     for(auto it : ans){
             cout << it << " ";
     }
@@ -59,4 +58,4 @@ int main(){
 //    / \     / \
 //   /   \   /   \ 
 //  4     5 6     7
-// inorder - 4 2 5 1 3 6 7
+// postorder - 4 5 2 6 7 3 1
