@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<climits>
 using namespace std;
 
 struct Node{
@@ -12,37 +13,20 @@ struct Node{
         left = right = nullptr;
     }
 };
-int maxD = 0;
-
-int heightBT(Node* root){
-    if(root==nullptr) return 0;
-    int left = heightBT(root->left);
-    int right = heightBT(root->right);
-    maxD = max(maxD,left+right);
-    return 1 + max(left,right);
-}
-
-//brute Force
-//TC O(n^2)
-//SC O(1)
-int diameterBT(Node* node){
-    heightBT(node);
-    return maxD;
-}
 
 int dfsHeight(Node* root, int &maxi){
     if(root==nullptr) return 0;
-    int left = dfsHeight(root->left,maxi);
-    int right = dfsHeight(root->right,maxi);
-    maxi = max(maxi,left+right);
-    return 1 + max(left,right);
+    int left = max(0,dfsHeight(root->left,maxi));
+    int right = max(0,dfsHeight(root->right,maxi));
+    maxi = max(maxi,left+right+root->data);
+    return root->data + max(left,right);
 }
 
 //optimal
 //TC O(n)
 //SC O(1)
-int diameter(Node* node){
-    int maxi = 0;
+int maxPathSum(Node* node){
+    int maxi = INT_MIN;
     dfsHeight(node,maxi);
     return maxi;
 }
@@ -55,9 +39,9 @@ int main(){
     root->left->right = new Node(5);
     root->right->left = new Node(6);
     root->right->right = new Node(7);
-    //int dia = diameterBT(root);
-    int dia = diameter(root);
-    cout << dia;
+    
+    int ans = maxPathSum(root);
+    cout << ans;
 }
 
 //         1
@@ -67,4 +51,4 @@ int main(){
 //    / \     / \
 //   /   \   /   \ 
 //  4     5 6     7
-// diameter - 4
+// max path sum - 18
