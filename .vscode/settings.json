@@ -11,6 +11,7 @@
         "vector": "cpp",
         "set": "cpp",
         "ratio": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "stack": "cpp"
     }
 }

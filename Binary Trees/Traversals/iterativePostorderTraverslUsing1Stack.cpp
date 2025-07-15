@@ -15,7 +15,7 @@ struct Node{
 };
 
 //optimal
-//TC O(n)
+//TC O(2n)
 //SC O(n) for stack ~ O(H) H=height of BT
 vector<int> postorderIterative(Node* root){
     vector<int> ans;
