@@ -15,8 +15,7 @@ struct Node{
     }
 };
 
-//we can't use recursive traversal
-//optimal
+//brute force
 //TC O(n)
 //SC O(n)
 vector<int> verticalTraversal(Node* root){
@@ -44,6 +43,22 @@ vector<int> verticalTraversal(Node* root){
     return ans;
 }
 
+void rightRecursion(Node* node, int level, vector<int> &ans){
+    if(node==nullptr) return;
+    if(ans.size()==level) ans.push_back(node->data);
+    rightRecursion(node->right,level+1,ans);
+    rightRecursion(node->left,level+1,ans);
+}
+
+//optimal
+//TC O(n)
+//SC O(H)
+vector<int> verticalTraversalOptimal(Node* root){
+    vector<int> ans;
+    rightRecursion(root,0,ans);
+    return ans;
+}
+
 int main(){
     Node* root = new Node(1);
     root->left = new Node(2);
@@ -54,7 +69,8 @@ int main(){
     root->right->right = new Node(7);
     root->left->right->left = new Node(8);
     root->right->left->right = new Node(9);
-    vector<int> ans = verticalTraversal(root);
+    //vector<int> ans = verticalTraversal(root);
+    vector<int> ans = verticalTraversalOptimal(root);
     for(auto it:ans){
         cout << it << " ";
     }
