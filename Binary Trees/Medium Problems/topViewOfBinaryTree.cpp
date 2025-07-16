@@ -15,7 +15,7 @@ struct Node{
     }
 };
 
-//we can't use recursive as it will visit the nodes that are at higher level
+//we can't use recursive traversal as it will visit the nodes that are at higher level
 //optimal
 //TC O(n)
 //SC O(n)
