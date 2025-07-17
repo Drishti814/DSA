@@ -73,3 +73,15 @@ int main(){
     Node* ans = LCAOptimal(root,root->left->left,root->left->right->right);
     cout << ans->data;
 }
+
+//         1
+//       /   \
+//      /     \
+//     2       3
+//    / \     
+//   /   \   
+//  4     5 
+//       / \  
+//      /   \   
+//     6     7
+// LCA - 2
