@@ -23,6 +23,9 @@ bool rootToNodePathExist(Node* root,vector<int> &path, int target){
     return false;
 }
 
+//optimal
+//TC O(n)
+//SC O(H)
 vector<int> rootToNodePath(Node* root,int target){
     vector<int> path;
     if(root==nullptr) return path;
