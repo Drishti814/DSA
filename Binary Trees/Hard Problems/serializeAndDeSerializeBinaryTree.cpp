@@ -46,6 +46,7 @@ Node* deSerialize(string data){
     getline(s,str,',');
     Node* root = new Node(stoi(str));
     queue<Node*> q;
+     q.push(root);
     while(!q.empty()){
         Node* node = q.front();
         q.pop();
