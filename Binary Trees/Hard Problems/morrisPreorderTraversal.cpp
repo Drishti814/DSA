@@ -16,13 +16,13 @@ struct Node{
 //optimal
 //TC O(n)
 //SC O(1)
-vector<int> inOrder(Node* root){
-    vector<int> inorder;
-    if(root==nullptr) return inorder;
+vector<int> preOrder(Node* root){
+    vector<int>preorder;
+    if(root==nullptr) return preorder;
     Node* curr = root;
     while(curr!=nullptr){
         if(!curr->left){
-            inorder.push_back(curr->data);
+            preorder.push_back(curr->data);
             curr = curr->right;
         }
         else{
@@ -32,16 +32,16 @@ vector<int> inOrder(Node* root){
             }
             if(prev->right == curr){
                 prev->right = NULL;
-                inorder.push_back(curr->data);
                 curr = curr->right;
             }
             else{
                 prev->right = curr;
+                preorder.push_back(curr->data);
                 curr = curr->left;
             }
         }
     }
-    return inorder;
+    return preorder;
 }
 
 int main(){
@@ -51,7 +51,7 @@ int main(){
     root->left->left = new Node(4);
     root->left->right = new Node(5);
     root->left->right->right = new Node(6);
-    vector<int> result = inOrder(root);
+    vector<int> result = preOrder(root);
     for(auto it : result){
         cout << it << " ";
     }
@@ -67,4 +67,4 @@ int main(){
 //         \
 //          \
 //           6
-// inorder - 4 2 5 1 6 3 
+// preorder - 1 2 4 5 6 3
