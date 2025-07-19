@@ -16,23 +16,23 @@ struct Node{
 //optimal
 //TC O(logn)
 //SC O(1)
-int ceilBST(Node* root, int val){
-    int ceil = -1;
+int floorBST(Node* root, int val){
+    int floor = -1;
     if(root==nullptr) return -1;
     while(root){
         if(root->data==val){
-        ceil = root->data;
-        return ceil;
+        floor = root->data;
+        return floor;
         } 
         else if(root->data>val){
-            ceil = root->data;
             root = root->left;
         } 
         else{
+            floor = root->data;
             root = root->right;
         } 
     }
-    return ceil;
+    return floor;
 }
 
 int main(){
@@ -46,8 +46,8 @@ int main(){
     root->right->right = new Node(14);
     root->right->right->left = new Node(13);
     int val = 11;
-    int ceil = ceilBST(root,val);
-    cout << ceil;
+    int floor = floorBST(root,val);
+    cout << floor;
 }
 
 //         8
@@ -60,4 +60,4 @@ int main(){
 //       /        /
 //      /        /
 //     6       13
-// ceil of 11 = 12
+// floor of 11 = 10
