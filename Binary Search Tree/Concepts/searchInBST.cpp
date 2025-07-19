@@ -21,7 +21,7 @@ Node* searchBST(Node* root, int val){
 }
 
 //optimal
-//TC O(log2n)
+//TC O(logn)
 //SC O(1) worst case - O(H)
 Node* searchBinarySearchTree(Node* root, int val){
     while(root!=nullptr && root->data!=val){
