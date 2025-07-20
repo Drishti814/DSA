@@ -18,7 +18,6 @@ struct Node{
 //SC O(1)
 Node* LCAofBST(Node* root, Node* x, Node* y){
     if(root==nullptr) return NULL;
-
     if(root->data < x->data && root->data < y->data){
         return LCAofBST(root->right,x,y);
     }
