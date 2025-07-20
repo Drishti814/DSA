@@ -13,6 +13,8 @@ struct Node{
     }
 };
 
+//TC O(n)
+//SC O(logn)-balanced O(n)-unbalanced
 bool isValidBST(Node* root, long long left, long long right){
     if(root==nullptr) return true;
     if(left >= root->data || root->data >= right) return false;
