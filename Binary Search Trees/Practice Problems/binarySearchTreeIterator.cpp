@@ -36,6 +36,13 @@ public:
         pushAll(temp->right);
         return temp->data;
     }
+
+    int before() {
+        Node* temp = st.top();
+        st.pop();
+        pushAllRight(temp->left);
+        return temp->data;
+    }
     
     bool hasNext() {
         return !st.empty();
@@ -49,8 +56,43 @@ private:
             root = root->left;
         }
     }
+    void pushAllRight(Node* root){
+        //both are same
+        //for(;root!=nullptr;st.push(root),root = root->left);
+        while(root){
+            st.push(root);
+            root = root->right;
+        }
+    }
 };
 
+class BSTIteratorBefore {
+private: 
+    stack<Node*> st;
+public:
+    BSTIteratorBefore(Node* root){ 
+        pushAll(root);
+    }
+
+    int before() {
+        Node* temp = st.top();
+        st.pop();
+        pushAll(temp->left);
+        return temp->data;
+    }
+    
+    bool hasNext() {
+        return !st.empty();
+    }
+private:
+    void pushAll(Node* root){
+        //for(;root!=nullptr;st.push(root),root = root->right);
+        while(root){
+            st.push(root);
+            root = root->right;
+        }
+    }
+};
 
 int main(){
     Node* root = new Node(8);
@@ -65,6 +107,11 @@ int main(){
     BSTIterator it(root);
     while(it.hasNext()==true){
         cout << it.next() << " ";
+    }
+    cout << endl;
+    BSTIteratorBefore itB(root);
+    while(itB.hasNext()==true){
+        cout << itB.before() << " ";
     }
 }
 
