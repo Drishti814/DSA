@@ -31,8 +31,17 @@ Node* arrayToLL(vector<int> &arr){
     return head;
 }
 
+void traversalLL(Node* head){
+    Node* temp = head;
+    while(temp){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
 int main(){
     vector<int> arr = {2,8,9,4};
     Node* head = arrayToLL(arr);
-    cout << head->data << " ";
+    //cout << head->data << " ";  //prints the head of the function
+    traversalLL(head);
 }
