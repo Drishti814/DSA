@@ -82,6 +82,28 @@ Node* deleteKth(Node* head, int k){
     return head;
 }
 
+Node* deleteVal(Node* head, int val){
+    if(head==nullptr) return head;
+    if(head->data==val){
+        Node* temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+    Node* temp = head;
+    Node* prev = NULL;
+    while(temp!=nullptr){
+        if(temp->data == val){
+            prev->next = prev->next->next;
+            free(temp);
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
 int main(){
     vector<int> arr = {2,8,9,4};
     Node* head = arrayToLL(arr);
@@ -90,7 +112,8 @@ int main(){
     cout  << endl;
     //Node* ans = deleteHead(head);
     //Node* ans = deleteTail(head);
-    Node* ans = deleteKth(head,3);
+    //Node* ans = deleteKth(head,3);
+    Node* ans = deleteVal(head,8);
     cout << "after: ";
     traversalLL(ans);  
     
