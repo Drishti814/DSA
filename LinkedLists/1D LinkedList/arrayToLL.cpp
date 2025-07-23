@@ -31,6 +31,7 @@ Node* arrayToLL(vector<int> &arr){
     return head;
 }
 
+//TC O(N)
 void traversalLL(Node* head){
     Node* temp = head;
     while(temp){
@@ -39,6 +40,7 @@ void traversalLL(Node* head){
     }
 }
 
+//TC O(N)
 int lengthLL(Node* head){
     Node* temp = head;
     int cnt = 0;
@@ -49,6 +51,16 @@ int lengthLL(Node* head){
     return cnt;
 }
 
+//TC O(N) for WorstCase, O(1) for BestCase, O(N/2) for AvgCase
+int searchElement(Node* head, int val){
+    Node* temp = head;
+    while(temp){
+        if(temp->data==val) return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
 int main(){
     vector<int> arr = {2,8,9,4};
     Node* head = arrayToLL(arr);
@@ -56,5 +68,8 @@ int main(){
     traversalLL(head);  //traverse the LL
     cout << endl;
     int len = lengthLL(head);   //gives length of LL
-    cout << len;
+    cout << len << endl;
+    int val = 8;
+    int ans = searchElement(head,val);  //check if an element is present or not
+    cout << ans;
 }
