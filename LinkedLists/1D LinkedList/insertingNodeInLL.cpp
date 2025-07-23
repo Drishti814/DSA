@@ -87,14 +87,17 @@ Node* insertBeforeEl(Node* head, int el, int val){
         return new Node(val,head);
     }
     Node* temp = head;
+    bool found = false;
     while(temp->next!=nullptr){
         if(temp->next->data == el){
             Node* element = new Node(val,temp->next);
             temp->next = element;
+            found = true;
             break;
         }
         temp = temp->next;
     }
+    if(!found) cout << "not found" << " ";
     return head;
 }
 
@@ -105,10 +108,10 @@ int main(){
     traversalLL(head);
     cout  << endl;
     int val = 5;
+    cout << "after: ";
     //Node* ans = insertHead(head,val);
     //Node* ans = insertTail(head,val);
     //Node* ans = insertKth(head,3,val);
-    Node* ans = insertBeforeEl(head,4,val);
-    cout << "after: ";
+    Node* ans = insertBeforeEl(head,7,val);
     traversalLL(ans);     
 }
