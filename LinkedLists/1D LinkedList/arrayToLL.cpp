@@ -39,9 +39,22 @@ void traversalLL(Node* head){
     }
 }
 
+int lengthLL(Node* head){
+    Node* temp = head;
+    int cnt = 0;
+    while(temp){
+        cnt++;
+        temp = temp->next;
+    }
+    return cnt;
+}
+
 int main(){
     vector<int> arr = {2,8,9,4};
     Node* head = arrayToLL(arr);
-    //cout << head->data << " ";  //prints the head of the function
-    traversalLL(head);
+    cout << head->data << endl;  //prints the head of the function
+    traversalLL(head);  //traverse the LL
+    cout << endl;
+    int len = lengthLL(head);   //gives length of LL
+    cout << len;
 }
