@@ -45,58 +45,54 @@ Node* insertHead(Node* head,int val){
     return head;
 }
 
-Node* deleteTail(Node* head){
-    if(head==NULL || head->next==nullptr) return NULL;
+Node* insertTail(Node* head, int val){
+    if(head==nullptr) return new Node(val);
     Node* temp = head;
-    while(temp->next->next!=nullptr){
+    while(temp->next!=nullptr){
         temp = temp->next;
     }
-    delete temp->next;
-    temp->next = nullptr;
+    temp->next = new Node(val) ;
     return head;
 }
 
-Node* deleteKth(Node* head, int k){
-    if(head==nullptr) return head;
+Node* insertKth(Node* head, int k, int val){
+    if(head==nullptr){
+        if(k==1){
+            return new Node(val);
+        }
+        else return head;
+    }
     if(k==1){
-        Node* temp = head;
-        head = head->next;
-        free(temp);
+        Node* temp = new Node(val,head);
+        head = temp;
         return head;
     }
     int cnt = 0;
     Node* temp = head;
-    Node* prev = NULL;
     while(temp!=nullptr){
         cnt++;
-        if(cnt == k){
-            prev->next = prev->next->next;
-            free(temp);
+        if(cnt == k - 1){
+            Node* el = new Node(val,temp->next);
+            temp->next = el;
             break;
         }
-        prev = temp;
         temp = temp->next;
     }
     return head;
 }
 
-Node* deleteVal(Node* head, int val){
+Node* insertBeforeEl(Node* head, int el, int val){
     if(head==nullptr) return head;
-    if(head->data==val){
-        Node* temp = head;
-        head = head->next;
-        free(temp);
-        return head;
+    if(head->data==el){
+        return new Node(val,head);
     }
     Node* temp = head;
-    Node* prev = NULL;
-    while(temp!=nullptr){
-        if(temp->data == val){
-            prev->next = prev->next->next;
-            free(temp);
+    while(temp->next!=nullptr){
+        if(temp->next->data == el){
+            Node* element = new Node(val,temp->next);
+            temp->next = element;
             break;
         }
-        prev = temp;
         temp = temp->next;
     }
     return head;
@@ -109,11 +105,10 @@ int main(){
     traversalLL(head);
     cout  << endl;
     int val = 5;
-    Node* ans = insertHead(head,val);
-    //Node* ans = deleteTail(head);
-    //Node* ans = deleteKth(head,3);
-    //Node* ans = deleteVal(head,8);
+    //Node* ans = insertHead(head,val);
+    //Node* ans = insertTail(head,val);
+    //Node* ans = insertKth(head,3,val);
+    Node* ans = insertBeforeEl(head,4,val);
     cout << "after: ";
-    traversalLL(ans);  
-    
+    traversalLL(ans);     
 }

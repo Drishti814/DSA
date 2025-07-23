@@ -82,9 +82,9 @@ Node* deleteKth(Node* head, int k){
     return head;
 }
 
-Node* deleteVal(Node* head, int val){
+Node* deleteEl(Node* head, int el){
     if(head==nullptr) return head;
-    if(head->data==val){
+    if(head->data==el){
         Node* temp = head;
         head = head->next;
         free(temp);
@@ -93,7 +93,7 @@ Node* deleteVal(Node* head, int val){
     Node* temp = head;
     Node* prev = NULL;
     while(temp!=nullptr){
-        if(temp->data == val){
+        if(temp->data == el){
             prev->next = prev->next->next;
             free(temp);
             break;
@@ -113,7 +113,7 @@ int main(){
     //Node* ans = deleteHead(head);
     //Node* ans = deleteTail(head);
     //Node* ans = deleteKth(head,3);
-    Node* ans = deleteVal(head,8);
+    Node* ans = deleteEl(head,8);
     cout << "after: ";
     traversalLL(ans);  
     
