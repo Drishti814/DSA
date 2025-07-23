@@ -40,7 +40,7 @@ void traversalLL(Node* head){
 }
 
 Node* deleteHead(Node* head){
-    if(head==nullptr) return NULL;
+    if(head==nullptr) return head;
     Node* temp = head;
     head = head->next;
     delete temp;
@@ -58,6 +58,30 @@ Node* deleteTail(Node* head){
     return head;
 }
 
+Node* deleteKth(Node* head, int k){
+    if(head==nullptr) return head;
+    if(k==1){
+        Node* temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+    int cnt = 0;
+    Node* temp = head;
+    Node* prev = NULL;
+    while(temp!=nullptr){
+        cnt++;
+        if(cnt == k){
+            prev->next = prev->next->next;
+            free(temp);
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
 int main(){
     vector<int> arr = {2,8,9,4};
     Node* head = arrayToLL(arr);
@@ -65,7 +89,8 @@ int main(){
     traversalLL(head);
     cout  << endl;
     //Node* ans = deleteHead(head);
-    Node* ans = deleteTail(head);
+    //Node* ans = deleteTail(head);
+    Node* ans = deleteKth(head,3);
     cout << "after: ";
     traversalLL(ans);  
     
