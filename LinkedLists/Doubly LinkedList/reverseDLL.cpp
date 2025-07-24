@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<stack>
 using namespace std;
 
 class Node{ 
@@ -42,7 +43,30 @@ void traversalDLL(Node* head){
     }
 }
 
+//brute froce
+//TC O(2N)
+//SC O(N)
 Node* reverseDLL(Node* head){
+    if(head==nullptr || head->next==nullptr) return head;
+    stack<int> st;
+    Node* temp = head;
+    while(temp){
+        st.push(temp->data);
+        temp = temp->next; 
+    }
+    Node* tempo = head;
+    while(tempo){
+        tempo->data = st.top();
+        st.pop();
+        tempo = tempo->next;
+    }
+    return head;
+}
+
+//optimal
+//TC O(N)
+//SC O(1)
+Node* reverseDLLOptimal(Node* head){
     if(head==nullptr || head->next==nullptr) return head;
     Node* prev = NULL;
     Node* curr = head;
@@ -64,6 +88,7 @@ int main(){
     cout  << endl;
     int val = 5;
     cout << "after: ";
-    Node* ans = reverseDLL(head);
+    //Node* ans = reverseDLL(head);
+    Node* ans = reverseDLLOptimal(head);
     traversalDLL(ans);     
 }
