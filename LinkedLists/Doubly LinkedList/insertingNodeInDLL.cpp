@@ -41,10 +41,12 @@ void traversalDLL(Node* head){
         temp = temp->next;
     }
 }
+
+//BEFORE NODE
+
 Node* insertHead(Node* head,int val){
     if(head==nullptr) return new Node(val);
-    Node* temp = new Node(val);
-    temp->next = head;
+    Node* temp = new Node(val,head,nullptr);
     head->back = temp;
     head = head->back;
     return head;
@@ -52,11 +54,14 @@ Node* insertHead(Node* head,int val){
 
 Node* insertTail(Node* head, int val){
     if(head==nullptr) return new Node(val);
-    Node* temp = head;
-    while(temp->next!=nullptr){
-        temp = temp->next;
+    Node* tail = head;
+    while(tail->next!=nullptr){
+        tail = tail->next;
     }
-    temp->next = new Node(val) ;
+    Node* prev = tail->back;
+    Node* temp = new Node(val,tail,prev);
+    tail->back = temp;
+    prev->next = temp;
     return head;
 }
 
@@ -114,8 +119,8 @@ int main(){
     cout  << endl;
     int val = 5;
     cout << "after: ";
-    Node* ans = insertHead(head,val);
-    //Node* ans = insertTail(head,val);
+    //Node* ans = insertHead(head,val);
+    Node* ans = insertTail(head,val);
     //Node* ans = insertKth(head,3,val);
     //Node* ans = insertBeforeEl(head,7,val);
     traversalDLL(ans);     
