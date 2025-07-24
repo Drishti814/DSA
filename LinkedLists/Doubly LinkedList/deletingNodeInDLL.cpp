@@ -66,32 +66,54 @@ Node* deleteTail(Node* head){
 }
 
 Node* deleteKth(Node* head, int k){
-    if(head == nullptr || head->next->data == k) return NULL;
-    if(k==1){
-        Node* temp = head;
-        head = head->next;
-        head->back == nullptr;
-        temp->next == nullptr;
+    if(head==nullptr) return NULL;
+    Node* temp = head;
+    int cnt = 0;
+    while(temp){
+        cnt++;
+        if(cnt==k) break;
+        temp = temp->next;
+    }
+    Node* prev = temp->back;
+    Node* front = temp->next;
+    if(prev==nullptr && front == nullptr){
+        return NULL;
+    }
+    else if(prev==nullptr){
+        return deleteHead(head);
+    }
+    else if(front==nullptr){
+        return deleteTail(head);
+    }
+    prev->next = front;
+    front->back = prev;
+    temp->next = temp->back = nullptr;
+    delete temp;
+    return head;
+}
+
+Node* deleteEl(Node* head, int el){
+    if(head==nullptr) return NULL;
+    Node* temp = head;
+    while(temp){
+        if(temp->data==el) break;
+        temp = temp->next;
+    }
+    Node* prev = temp->back;
+    Node* front = temp->next;
+    if(prev==nullptr && front == nullptr){
+        return NULL;
+    }
+    else if(front==nullptr){
+        prev->next = nullptr;
+        temp->back = nullptr;
         delete temp;
         return head;
     }
-    
-    int cnt = 0;
-    Node* temp = head;
-    Node* prev = temp->back;
-    Node* front = temp->next;
-    while(temp->next){
-        cnt++;
-        if(cnt == k){
-            prev->next = front;
-            front->back = prev;
-            delete temp;
-            break;
-        }
-        prev = temp->back;
-        front = temp->next;
-        temp = temp->next;
-    }
+    prev->next = front;
+    front->back = prev;
+    temp->next = temp->back = nullptr;
+    delete temp;
     return head;
 }
 
@@ -103,8 +125,8 @@ int main(){
     cout  << endl;
     //Node* ans = deleteHead(head);
     //Node* ans = deleteTail(head);
-    Node* ans = deleteKth(head,3);
-    //Node* ans = deleteEl(head,8);
+    //Node* ans = deleteKth(head,3);
+    Node* ans = deleteEl(head,4);
     cout << "after: ";
     traversalDLL(ans);  
 }
