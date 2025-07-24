@@ -54,6 +54,7 @@ Node* insertHead(Node* head,int val){
 
 Node* insertTail(Node* head, int val){
     if(head==nullptr) return new Node(val);
+    if(!head->next) return insertHead(head,val);
     Node* tail = head;
     while(tail->next!=nullptr){
         tail = tail->next;
@@ -66,28 +67,18 @@ Node* insertTail(Node* head, int val){
 }
 
 Node* insertKth(Node* head, int k, int val){
-    if(head==nullptr){
-        if(k==1){
-            return new Node(val);
-        }
-        else return head;
-    }
-    if(k==1){
-       // Node* temp = new Node(val,head);
-        //head = temp;
-        return head;
-    }
-    int cnt = 0;
+    if(k==1) return insertHead(head,val);
     Node* temp = head;
-    while(temp!=nullptr){
+    int cnt = 0;
+    while(temp){
         cnt++;
-        if(cnt == k - 1){
-           // Node* el = new Node(val,temp->next);
-            //temp->next = el;
-            break;
-        }
+        if(cnt==k) break;
         temp = temp->next;
     }
+    Node* prev = temp->back;
+    Node* newNode = new Node(val,temp,prev);
+    prev->next = newNode;
+    temp->back = newNode;
     return head;
 }
 
@@ -120,8 +111,8 @@ int main(){
     int val = 5;
     cout << "after: ";
     //Node* ans = insertHead(head,val);
-    Node* ans = insertTail(head,val);
-    //Node* ans = insertKth(head,3,val);
+    //Node* ans = insertTail(head,val);
+    Node* ans = insertKth(head,3,val);
     //Node* ans = insertBeforeEl(head,7,val);
     traversalDLL(ans);     
 }
