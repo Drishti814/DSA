@@ -46,8 +46,8 @@ Node* deleteHead(Node* head){
     if(head == nullptr || head->next == nullptr) return NULL;
     Node* temp = head;
     head = head->next;
-    head->back == nullptr;
-    temp->next == nullptr;
+    head->back = nullptr;
+    temp->next = nullptr;
     delete temp;
     return head;
 }
@@ -99,10 +99,22 @@ Node* deleteEl(Node* head, int el){
         if(temp->data==el) break;
         temp = temp->next;
     }
+    if(!temp){
+        cout << "Not Found" << " ";
+        return head;
+    }
     Node* prev = temp->back;
     Node* front = temp->next;
     if(prev==nullptr && front == nullptr){
+        delete temp;
         return NULL;
+    }
+    else if(prev==nullptr){
+        head = head->next;
+        head->back = nullptr;
+        temp->next = nullptr;
+        delete temp;
+        return head;
     }
     else if(front==nullptr){
         prev->next = nullptr;
@@ -123,10 +135,10 @@ int main(){
     cout << "before: ";
     traversalDLL(head);
     cout  << endl;
+    cout << "after: ";
     //Node* ans = deleteHead(head);
     //Node* ans = deleteTail(head);
     //Node* ans = deleteKth(head,3);
-    Node* ans = deleteEl(head,4);
-    cout << "after: ";
+    Node* ans = deleteEl(head,8);
     traversalDLL(ans);  
 }
