@@ -41,6 +41,8 @@ void traversalLL(Node* head){
 }
 
 //brute force
+//TC O(2N)
+//SC O(N)
 Node* oddEven(Node* head){
     if(head == nullptr || head->next == nullptr) return head;
     vector<int> arr;
@@ -64,6 +66,25 @@ Node* oddEven(Node* head){
     return head;
 }
 
+//optimal
+//TC O(N)
+//SC O(1)
+Node* oddEvenOptimal(Node* head){
+    if(head == nullptr || head->next == nullptr) return head;
+    Node* odd = head;
+    Node* evenHead = head->next;
+     Node* even = head->next;
+    while(even && even->next){
+        odd->next = odd->next->next;
+        even->next = even->next->next;
+
+        odd = odd->next;
+        even = even->next;
+    }
+    odd->next = evenHead;
+    return head;
+}
+
 int main(){
     vector<int> arr1 = {1,2,3,4,5,6};
     Node* head1 = arrayToLL(arr1);
@@ -71,6 +92,7 @@ int main(){
     traversalLL(head1);
     cout << endl;
     cout << "after: ";   //after sum
-    Node* ans = oddEven(head1);
+    //Node* ans = oddEven(head1);
+    Node* ans = oddEvenOptimal(head1);
     traversalLL(ans);
 }
