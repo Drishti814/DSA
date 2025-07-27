@@ -75,7 +75,7 @@ int main(){
     cout << "LL 2: ";
     traversalLL(head2);
     cout  << endl;
-    cout << "LL 3: ";
+    cout << "LL 3: ";   //after sum
     Node* ans = addTwoNumbers(head1, head2);
     traversalLL(ans);
 }
