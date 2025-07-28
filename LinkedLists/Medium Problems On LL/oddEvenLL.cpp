@@ -41,7 +41,7 @@ void traversalLL(Node* head){
 }
 
 //brute force
-//TC O(2N)
+//TC O(N)
 //SC O(N)
 Node* oddEven(Node* head){
     if(head == nullptr || head->next == nullptr) return head;
@@ -67,7 +67,7 @@ Node* oddEven(Node* head){
 }
 
 //optimal
-//TC O(N)
+//TC O(N/2)
 //SC O(1)
 Node* oddEvenOptimal(Node* head){
     if(head == nullptr || head->next == nullptr) return head;
@@ -91,7 +91,7 @@ int main(){
     cout << "before: ";
     traversalLL(head1);
     cout << endl;
-    cout << "after: ";   //after sum
+    cout << "after: ";   
     //Node* ans = oddEven(head1);
     Node* ans = oddEvenOptimal(head1);
     traversalLL(ans);
