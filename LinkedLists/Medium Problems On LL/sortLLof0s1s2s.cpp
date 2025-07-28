@@ -41,14 +41,15 @@ void traversalLL(Node* head){
 }
 
 //brute force
-//TC O(N)
-//SC O(N)
+//TC O(2N)
+//SC O(1)
 Node* sort0s1s2s(Node* head){
+    if(!head || !head->next) return head;
     Node* temp = head;
     int cnt0 = 0;
     int cnt1 = 0;
     int cnt2 = 0;
-    while(temp){
+    while(temp){ 
         if(temp->data == 0) cnt0++;
         else if(temp->data == 1) cnt1++;
         else cnt2++;
@@ -74,22 +75,40 @@ Node* sort0s1s2s(Node* head){
 }
 
 //optimal
-//TC O(N/2)
+//TC O(N)
 //SC O(1)
-Node* oddEvenOptimal(Node* head){
-    if(head == nullptr || head->next == nullptr) return head;
-    Node* odd = head;
-    Node* evenHead = head->next;
-     Node* even = head->next;
-    while(even && even->next){
-        odd->next = odd->next->next;
-        even->next = even->next->next;
-
-        odd = odd->next;
-        even = even->next;
+Node* sort0s1s2sOptimal(Node* head){
+    if(!head || !head->next) return head;
+    Node* dummy0 = new Node(-1);
+    Node* zero = dummy0;
+    Node* dummy1 = new Node(-1);
+    Node* one = dummy1;
+    Node* dummy2 = new Node(-1);
+    Node* two = dummy2;
+    Node* temp = head;
+    while(temp){ 
+        if(temp->data == 0){
+            zero->next = temp;
+            zero = zero->next;
+        }
+        else if(temp->data == 1){
+            one->next = temp;
+            one = one->next;
+        }
+        else{
+            two->next = temp;
+            two = two->next;
+        }
+        temp = temp->next;
     }
-    odd->next = evenHead;
-    return head;
+    zero->next = dummy1->next ? dummy1->next : dummy2->next; 
+    one->next = dummy2->next;
+    two->next = nullptr;
+    Node* newHead = dummy0->next;
+    delete dummy0;
+    delete dummy1;
+    delete dummy2;
+    return newHead;
 }
 
 int main(){
@@ -99,7 +118,7 @@ int main(){
     traversalLL(head1);
     cout << endl;
     cout << "after: ";   
-    Node* ans = sort0s1s2s(head1);
-    //Node* ans = oddEvenOptimal(head1);
+    //Node* ans = sort0s1s2s(head1);
+    Node* ans = sort0s1s2sOptimal(head1);
     traversalLL(ans);
 }
