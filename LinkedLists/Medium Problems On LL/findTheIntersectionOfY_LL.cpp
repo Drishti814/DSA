@@ -109,13 +109,10 @@ Node* intersectionPointOptimal(Node* head1, Node* head2){
     Node* temp1 = head1;
     Node* temp2 = head2;
     while(temp1 != temp2){
-        temp1 = temp1->next;
-        temp2 = temp2->next;
-        if(temp1 == NULL) temp1 = head2;
-        if(temp2 == NULL) temp2 = head1;
-        if(temp1 == temp2) return temp1;
+        temp1 = temp1==NULL ? head2 : temp1->next;
+        temp2 = temp2==NULL ? head1 : temp2->next;
     }
-    return NULL;
+    return temp1;
 }
 
 int main(){
