@@ -85,10 +85,10 @@ Node* collisionPoint(Node* head1, Node* head2, int d){
     return head1;
 }
 
-//better - differences
+//optimal1 - differences
 //TC O(N1+N2)
-//SC O(N1) or O(N2)
-Node* intersectionPointBetter2(Node* head1, Node* head2){
+//SC O(1)
+Node* intersectionPointOptimal1(Node* head1, Node* head2){
     Node* temp1 = head1;
     int cnt1 = 0;
      while(temp1){
@@ -105,7 +105,10 @@ Node* intersectionPointBetter2(Node* head1, Node* head2){
     return collisionPoint(head2,head1,cnt1-cnt2);
 }
 
-Node* intersectionPointOptimal(Node* head1, Node* head2){
+//optimal2 - pointers
+//TC O(N1+N2)
+//SC O(1)
+Node* intersectionPointOptimal2(Node* head1, Node* head2){
     Node* temp1 = head1;
     Node* temp2 = head2;
     while(temp1 != temp2){
@@ -136,7 +139,7 @@ int main(){
     cout  << endl;
     //Node* ans = intersectionPoint(head1,head2);
     //Node* ans = intersectionPointBetter1(head1,head2);
-    //Node* ans = intersectionPointBetter2(head1,head2);
-    Node* ans = intersectionPointOptimal(head1,head2);
+    //Node* ans = intersectionPointOptimal1(head1,head2);
+    Node* ans = intersectionPointOptimal2(head1,head2);
     cout << ans->data;
 }
