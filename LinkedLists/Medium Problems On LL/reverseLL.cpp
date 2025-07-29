@@ -40,53 +40,40 @@ void traversalLL(Node* head){
     }
 }
 
-//brute force
-//TC O(2*len)
-//SC O(1)
-Node* removeNthfromEnd(Node* head, int n){
+//brute froce
+//TC O(2N)
+//SC O(N)
+Node* reverseLL(Node* head){
+    if(head==nullptr || head->next==nullptr) return head;
+    stack<int> st;
     Node* temp = head;
-    int cnt = 0;
     while(temp){
-        cnt++;
-        temp = temp->next;
+        st.push(temp->data);
+        temp = temp->next; 
     }
-    if(cnt == n){
-        Node* newHead = head->next;
-        delete head;
-        return newHead;
+    Node* tempo = head;
+    while(tempo){
+        tempo->data = st.top();
+        st.pop();
+        tempo = tempo->next;
     }
-    int res = cnt - n;
-    Node* curr = head;
-    while(curr){
-        res--;
-        if(res == 0) break;
-        curr = curr->next;
-    }
-    Node* del = curr->next;
-    curr->next = curr->next->next;
-    delete del;
     return head;
 }
 
 //optimal
-//TC O(len)
+//TC O(N)
 //SC O(1)
-Node* removeNthfromEndOptimal(Node* head, int n){
-    Node* fast = head;
-    for(int i = 0;i<n;i++) fast = fast->next;
-    if(fast==nullptr){
-        Node* newHead = head->next;
-        delete head;
-        return newHead;
+Node* reverseLLOptimal(Node* head){
+    if(head==nullptr || head->next==nullptr) return head;
+    Node* prev = NULL;
+    Node* curr = head;
+    while(curr!=nullptr){
+        Node* front = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = front;
     }
-    Node* slow = head;
-    while(fast->next){
-        slow = slow->next;
-        fast = fast->next;
-    }
-    Node* del = slow->next;
-    slow->next = slow->next->next;
-    delete del;
+    head = prev;
     return head;
 }
 
@@ -97,7 +84,7 @@ int main(){
     traversalLL(head1);
     cout << endl;
     cout << "after: ";   
-    Node* ans = removeNthfromEnd(head1,2);
-    //Node* ans = removeNthfromEndOptimal(head1,2);
+    //Node* ans = reverseLL(head1);
+    Node* ans = reverseLLOptimal(head1);
     traversalLL(ans);
 }

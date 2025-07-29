@@ -15,6 +15,7 @@
         "stack": "cpp",
         "unordered_map": "cpp",
         "istream": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "new": "cpp"
     }
 }
