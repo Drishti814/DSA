@@ -58,7 +58,9 @@ Node* intersectionPoint(Node* head1, Node* head2){
 }
 
 //better - hashing
-Node* intersectionPointBetter(Node* head1, Node* head2){
+//TC O(N1+N2)
+//SC O(N1) or O(N2)
+Node* intersectionPointBetter1(Node* head1, Node* head2){
     unordered_set<Node*> st;
     while(head1){
         st.insert(head1);
@@ -69,6 +71,36 @@ Node* intersectionPointBetter(Node* head1, Node* head2){
         head2 = head2->next;
     }
     return NULL;
+}
+
+Node* collisionPoint(Node* head1, Node* head2, int d){
+    while(d){
+        d--;
+        head2 = head2->next;
+    }
+    while(head1!=head2){
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+    return head1;
+}
+
+//better - differences
+Node* intersectionPointBetter2(Node* head1, Node* head2){
+    Node* temp1 = head1;
+    int cnt1 = 0;
+     while(temp1){
+        cnt1++;
+        temp1 = temp1->next;
+     }
+    Node* temp2 = head2;
+    int cnt2 = 0;
+    while(temp2){
+        cnt2++;
+        temp2 = temp2->next;
+    }
+    if(cnt2 > cnt1) return collisionPoint(head1,head2,cnt2-cnt1); //(smaller,bigger,diff)
+    return collisionPoint(head2,head1,cnt1-cnt2);
 }
 
 int main(){
@@ -91,6 +123,7 @@ int main(){
     traversalLL(head2);
     cout  << endl;
     //Node* ans = intersectionPoint(head1,head2);
-    Node* ans = intersectionPointBetter(head1,head2);
+    //Node* ans = intersectionPointBetter1(head1,head2);
+    Node* ans = intersectionPointBetter2(head1,head2);
     cout << ans->data;
 }
