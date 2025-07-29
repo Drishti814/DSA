@@ -60,7 +60,7 @@ Node* reverseLL(Node* head){
     return head;
 }
 
-//optimal
+//optimal iterative
 //TC O(N)
 //SC O(1)
 Node* reverseLLOptimal(Node* head){
@@ -77,6 +77,18 @@ Node* reverseLLOptimal(Node* head){
     return head;
 }
 
+//recursive
+//TC O(N)
+//SC O(N)
+Node* reverseLLRecursive(Node* head){
+    if(head==nullptr || head->next==nullptr) return head;
+    Node* newHead = reverseLLRecursive(head->next);
+    Node* front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
+}
+
 int main(){
     vector<int> arr1 = {1,2,3,4,5};
     Node* head1 = arrayToLL(arr1);
@@ -85,6 +97,7 @@ int main(){
     cout << endl;
     cout << "after: ";   
     //Node* ans = reverseLL(head1);
-    Node* ans = reverseLLOptimal(head1);
+    //Node* ans = reverseLLOptimal(head1);
+    Node* ans = reverseLLRecursive(head1);
     traversalLL(ans);
 }
