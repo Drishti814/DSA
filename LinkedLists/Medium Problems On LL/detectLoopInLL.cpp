@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<stack>
+#include<unordered_map>
 using namespace std;
 
 class Node{    
@@ -40,16 +41,32 @@ void traversalLL(Node* head){
     }
 }
 
-bool hasCycle(Node *head) {
-        Node* slow = head;
-        Node* fast = head;
-        while(fast && fast->next){
-            slow = slow->next;
-            fast = fast->next->next;
-            if(slow==fast) return true;
+bool hasCycle(Node *head){
+    Node* temp = head;
+    unordered_map<Node*, int> mpp;
+    while(temp!=nullptr){
+        if(mpp.find(temp)!=mpp.end()){
+            return true;
         }
-        return false;
+        mpp[temp] = 1;
+        temp = temp->next;
     }
+    return false;
+}
+
+//optimal
+//TC O(N)
+//SC O(1)
+bool hasCycleOptimal(Node *head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast) return true;
+    }
+    return false;
+}
 
 int main(){
     Node* head = new Node(1);
