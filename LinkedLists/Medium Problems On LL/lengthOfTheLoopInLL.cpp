@@ -41,31 +41,43 @@ void traversalLL(Node* head){
     }
 }
 
-bool hasCycle(Node *head){
+int lengthCycle(Node *head){
     Node* temp = head;
+    int val = 0;
     unordered_map<Node*, int> mpp;
     while(temp!=nullptr){
         if(mpp.find(temp)!=mpp.end()){
-            return true;
+            return val - mpp[temp];
         }
-        mpp[temp] = 1;
+        mpp[temp] = val;
+        val++;
         temp = temp->next;
     }
-    return false;
+    return 0;
+}
+
+int lengthLoop(Node* slow,Node* fast){
+    int cnt = 1;
+    fast = fast->next;
+    while(slow!=fast){
+        cnt++;
+        fast = fast->next;
+    }
+    return cnt;
 }
 
 //optimal
 //TC O(N)
 //SC O(1)
-bool hasCycleOptimal(Node *head){
+int lengthCycleOptimal(Node *head){
     Node* slow = head;
     Node* fast = head;
     while(fast && fast->next){
         slow = slow->next;
         fast = fast->next->next;
-        if(slow==fast) return true;
+        if(slow==fast) return lengthLoop(slow,fast);
     }
-    return false;
+    return 0;
 }
 
 int main(){
@@ -79,9 +91,8 @@ int main(){
     third->next = fourth;
     fourth->next = fifth;
     fifth->next = third; 
-    cout << "Loop: ";
-    //bool ans = hasCycle(head);
-    bool ans = hasCycleOptimal(head);
-    if(ans==1) cout << "yes";
-    else cout << "no";
+    cout << "Loop length: ";
+    //int ans = lengthCycle(head);
+    int ans = lengthCycleOptimal(head);
+    cout << ans;
 }

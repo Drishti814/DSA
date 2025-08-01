@@ -1,1 +1,1 @@
-Loop: yes
+Loop length: 3
