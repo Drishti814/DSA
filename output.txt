@@ -1,2 +1,1 @@
-before: 1 2 3 4 5 
-after: 1 2 4 5 
+Starting Node Of Loop: 3
