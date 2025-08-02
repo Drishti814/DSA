@@ -41,6 +41,9 @@ void traversalLL(Node* head){
     }
 }
 
+//brute force
+//TC O(N*2*log(N))
+//SC O(N)
 int lengthCycle(Node *head){
     Node* temp = head;
     int val = 0;

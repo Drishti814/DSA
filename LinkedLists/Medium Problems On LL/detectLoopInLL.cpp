@@ -41,6 +41,9 @@ void traversalLL(Node* head){
     }
 }
 
+//brute force
+//TC O(N*2*log(N))
+//SC O(N)
 bool hasCycle(Node *head){
     Node* temp = head;
     unordered_map<Node*, int> mpp;
