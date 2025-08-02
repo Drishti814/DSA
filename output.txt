@@ -1,4 +1,2 @@
-LL: 1 2 3 4 9 
-Pairs with sum 5: 
-1,4
-2,3
+before: 1 1 1 2 2 3 4 5 5 
+after: 1 2 3 4 5 
