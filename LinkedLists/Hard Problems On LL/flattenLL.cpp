@@ -98,19 +98,52 @@ Node* flattenLL(Node* head){
     return arraytoChildLL(arr);
 }
 
+Node* mergeTwoLL(Node* list1, Node* list2){
+    Node* dummy = new Node(-1);
+    Node* temp = dummy;
+    while(list1 && list2){
+        if(list1->data < list2->data){
+            temp->child = list1;
+            temp = list1;
+            list1 = list1->child;
+        }
+        else{
+            temp->child = list2;
+            temp = list2;
+            list2 = list2->child;
+        }
+    }
+    if(list1) temp->child = list1;
+    else temp->child = list2;
+    if(dummy->child) dummy->child->next = nullptr; 
+    return dummy->child;
+}
+
+//optimal
+//TC O(2*M*N)
+//SC O(1)
+Node* flattenLLOptimal(Node* head){
+    if(head==NULL || head->next == NULL) return head;
+    Node* mergedHead =flattenLLOptimal(head->next);
+    head = mergeTwoLL(head,mergedHead);
+    return head;
+}
+
 int main(){
     Node* head = new Node(5);
     head->child = new Node(14);
-    head->next = new Node(10);
+    head->next = new Node(3);
     head->next->child = new Node(4);
     head->next->next = new Node(12);
-    head->next->next->child = new Node(20);
-    head->next->next->child->child = new Node(13);
+    head->next->next->child = new Node(13);
+    head->next->next->child->child = new Node(20);
     head->next->next->next = new Node(7);
     head->next->next->next->child = new Node(17);
+    cout << "before: ";
     printOriginalLL(head,0);
     cout << endl;
     cout << "after: ";
-    Node* ans = flattenLL(head);
+    //Node* ans = flattenLL(head);
+    Node* ans = flattenLLOptimal(head);
     traversalChildLL(ans);
 }
