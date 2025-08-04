@@ -59,8 +59,11 @@ Node* findkthNode(Node* head, int k){
     return temp;
 }
 
+//optimal
+//TC O(2N)
+//SC O(1)
 Node* reverseByGroups(Node* head, int k){
-    if (!head || k == 1) return head;
+    if(!head || k == 1) return head;
     Node* temp = head;
     Node* prev = NULL;
     while(temp){
