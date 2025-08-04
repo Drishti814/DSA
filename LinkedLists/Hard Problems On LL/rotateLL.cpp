@@ -40,6 +40,9 @@ void traversalLL(Node* head){
     }
 }
 
+//optimal
+//TC O(N)
+//SC O(1)
 Node* rotateLL(Node* head, int k){
     if(!head || !head->next || k == 0) return head;
     Node* tail = head;
