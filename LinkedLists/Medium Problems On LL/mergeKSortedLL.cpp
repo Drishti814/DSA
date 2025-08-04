@@ -2,6 +2,7 @@
 #include<vector>
 #include<stack>
 #include<algorithm>
+#include<queue>
 using namespace std;
 
 class Node{    
@@ -41,9 +42,12 @@ void traversalLL(Node* head){
     }
 }
 
+//K = number of lists
+//N = size of each list in worst case
+
 //brute force
-//TC O(2*M*N+M*N*Log(M*N))
-//SC O(2*M*N)
+//TC O(2*K*N+K*N*log(K*N))
+//SC O(2*K*N)
 Node* mergeLL(vector<Node*> lists){
     vector<int> arr;
     for(int i = 0;i<lists.size();i++){
@@ -89,6 +93,26 @@ Node* mergeLLBetter(vector<Node*> lists){
     return head;
 }
 
+//optimal
+//TC O(KlogK + 3NlogK) ~ O(N^2)
+//SC O(k)
+Node* mergeLLOptimal(vector<Node*> lists){
+    priority_queue<pair<int, Node*>, vector<pair<int, Node*>>, greater<pair<int, Node*>>> pq;
+    for(int i = 0;i<lists.size();i++){
+        pq.push({lists[i]->data,lists[i]});
+    }
+    Node* dummy = new Node(-1);
+    Node* temp = dummy;
+    while(!pq.empty()){
+        auto p = pq.top();
+        temp->next = p.second;
+        pq.pop();
+        if(p.second->next) pq.push({p.second->next->data,p.second->next});
+        temp = temp->next;
+    }
+    return dummy->next;
+}
+
 int main(){
     vector<vector<int>> arr = {
         {1, 4, 5},
@@ -99,8 +123,9 @@ int main(){
     for (auto it: arr) {
         lists.push_back(arrayToLL(it));
     }
-    //Node* merged = mergeLL(lists);
-    Node* merged = mergeLLBetter(lists);
+    //Node* merged = mergeLL(lists); 
+    //Node* merged = mergeLLBetter(lists);
+    Node* merged = mergeLLOptimal(lists);
     cout << "Merged List: ";
     traversalLL(merged);
 }
