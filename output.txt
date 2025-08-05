@@ -1,10 +1,9 @@
-before: 
-Data: 7, Random: 21
-Data: 14, Random: 7
-Data: 21, Random: 28
-Data: 28, Random: 14
-after: 
-Data: 7, Random: 21
-Data: 14, Random: 7
-Data: 21, Random: 28
-Data: 28, Random: 14
+Start at: a.com
+After visiting b and c: c.com
+Back 1: b.com
+Back 1 more: a.com
+Forward 1: b.com
+Current page after visiting d: d.com
+Try forward 1 (should do nothing): d.com
+Back 2: a.com
+Forward 3: d.com
