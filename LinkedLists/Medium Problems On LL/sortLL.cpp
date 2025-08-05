@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<stack>
+#include<algorithm>
 using namespace std;
 
 class Node{    
@@ -40,18 +41,77 @@ void traversalLL(Node* head){
     }
 }
 
+//brute force
+//TC(2N + logN)
+//SC O(N)
 Node* sortLL(Node* head){
-    
+    vector<int> arr;
+    Node* temp = head;
+    while(temp){
+        arr.push_back(temp->data);
+        temp = temp->next;
+    }
+    sort(arr.begin(),arr.end());
+    temp = head;
+    int i = 0;
+    while(temp){
+        temp->data = arr[i];
+        i++;
+        temp = temp->next;
+    }
     return head;
 }
 
+Node* middleElement(Node* head){
+    if(head==nullptr || head->next==nullptr) return head;
+    Node* slow = head;
+    Node* fast = head->next;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+
+Node* mergeTwoLL(Node* list1, Node* list2){
+    Node* dummy = new Node(-1);
+    Node* temp = dummy;
+    while(list1 && list2){
+        if(list1->data < list2->data){
+            temp->next = list1;
+            temp = list1;
+            list1 = list1->next;
+        }
+        else{
+            temp->next = list2;
+            temp = list2;
+            list2 = list2->next;
+        }
+    }
+    if(list1) temp->next = list1;
+    else temp->next = list2;
+    return dummy->next;
+}
+
+Node* sortLLOptimal(Node* head){
+    if(!head || !head->next) return head;
+    Node* middle = middleElement(head);
+    Node* left = head;
+    Node* right = middle->next;
+    middle->next = nullptr;
+    left = sortLLOptimal(left);
+    right = sortLLOptimal(right);
+    return mergeTwoLL(left,right);
+}
+
 int main(){
-    vector<int> arr1 = {3,2,5,1,4};
+    vector<int> arr1 = {3,2,5,1,6,4};
     Node* head1 = arrayToLL(arr1);
     cout << "before: ";
     traversalLL(head1);
     cout << endl;
     cout << "after: ";
-    Node* ans = sortLL(head1);
+    //Node* ans = sortLL(head1);
+    Node* ans = sortLLOptimal(head1);
     traversalLL(ans);
 }

@@ -1,2 +1,2 @@
-before: 3 2 5 1 4 
-after: 3 2 5 1 4 
+before: 3 2 5 1 6 4 
+after: 1 2 3 4 5 6 
