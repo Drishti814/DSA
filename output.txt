@@ -1,2 +1,10 @@
-before: 3 2 5 1 6 4 
-after: 1 2 3 4 5 6 
+before: 
+Data: 7, Random: 21
+Data: 14, Random: 7
+Data: 21, Random: 28
+Data: 28, Random: 14
+after: 
+Data: 7, Random: 21
+Data: 14, Random: 7
+Data: 21, Random: 28
+Data: 28, Random: 14
