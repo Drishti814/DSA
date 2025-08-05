@@ -93,6 +93,9 @@ Node* mergeTwoLL(Node* list1, Node* list2){
     return dummy->next;
 }
 
+//optimal
+//TC O((N+N/2)*logN)
+//SC O(N)
 Node* sortLLOptimal(Node* head){
     if(!head || !head->next) return head;
     Node* middle = middleElement(head);
