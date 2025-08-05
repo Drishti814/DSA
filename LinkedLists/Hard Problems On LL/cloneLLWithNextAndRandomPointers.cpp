@@ -58,6 +58,9 @@ void printClonedLL(Node *head) {
     }
 }
 
+//brute force
+//TC O(2N)
+//SC O(N)+O(N)
 Node* cloneLL(Node* head){
     Node* temp = head;
     map<Node*,Node*> mpp;
@@ -74,6 +77,23 @@ Node* cloneLL(Node* head){
         temp = temp->next;
     }
     return mpp[head];
+}
+
+Node* cloneLLOptimal(Node* head){
+    Node* temp = head;
+    Node* copyNode = NULL;
+    while(temp){
+        copyNode = new Node(temp->data);
+        copyNode->next = temp->next;
+        temp->next = copyNode;
+        temp = temp->next->next;
+    }
+    temp = head;
+    while(temp){
+        copyNode = temp->next;
+        copyNode->random = temp->random->next;
+        temp = temp->next->next;
+    }
 }
 
 int main(){
