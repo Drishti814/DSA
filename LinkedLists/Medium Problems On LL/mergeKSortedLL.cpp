@@ -97,9 +97,9 @@ Node* mergeLLBetter(vector<Node*> lists){
 //TC O(KlogK + 3NlogK) ~ O(N^2)
 //SC O(k)
 Node* mergeLLOptimal(vector<Node*> lists){
-    priority_queue<pair<int, Node*>, vector<pair<int, Node*>>, greater<pair<int, Node*>>> pq;
+    priority_queue<pair<int, Node*>, vector<pair<int, Node*>>, greater<pair<int, Node*>>> pq;   //default max heap for min heap use this
     for(int i = 0;i<lists.size();i++){
-        pq.push({lists[i]->data,lists[i]});
+        if(lists[i]) pq.push({lists[i]->data,lists[i]});
     }
     Node* dummy = new Node(-1);
     Node* temp = dummy;
