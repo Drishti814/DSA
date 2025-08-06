@@ -1,1 +1,2 @@
-the decimal conversion of the string is:13
+the 1s Complement of the string is:0010
+the 2s Complement of the string is:0011
