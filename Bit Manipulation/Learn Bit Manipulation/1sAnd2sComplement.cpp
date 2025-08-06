@@ -3,7 +3,7 @@
 using namespace std;
 
 //TC O(len)
-//SC O(1)
+//SC O(len)
 string onesComplement(string s){
     string st = "";
     int len = s.length();
@@ -14,6 +14,8 @@ string onesComplement(string s){
     return st;
 }
 
+//TC O(len)
+//SC O(len)
 string twosComplement(string s){
     string st = onesComplement(s);
     int len = st.length();

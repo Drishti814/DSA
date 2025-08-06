@@ -1,2 +1,2 @@
-the 1s Complement of the string is:0010
-the 2s Complement of the string is:0011
+ before swapping: 2 3
+ after swapping: 3 2
