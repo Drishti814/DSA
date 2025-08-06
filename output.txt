@@ -1,2 +1,1 @@
- before swapping: 2 3
- after swapping: 3 2
+bit is not set
