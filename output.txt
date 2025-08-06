@@ -1,1 +1,1 @@
-13
+after removing the last set bit: 10
