@@ -1,1 +1,1 @@
-after removing the last set bit: 10
+Number is power of two 
