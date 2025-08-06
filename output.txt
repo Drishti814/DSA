@@ -1,1 +1,1 @@
-Number is power of two 
+3
