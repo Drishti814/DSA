@@ -2,6 +2,8 @@
 #include<algorithm>
 using namespace std;
 
+//TC O(logN)
+//SC O(logN)
 string convertToBinary(int n){
     if(n==0) return "0";
     string s = "";

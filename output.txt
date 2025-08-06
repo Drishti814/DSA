@@ -1,1 +1,1 @@
-the binary conversion of the number is:1101
+the decimal conversion of the string is:13
