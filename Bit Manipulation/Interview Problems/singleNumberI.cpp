@@ -21,6 +21,19 @@ int singleNumber(vector<int> &nums){
     return -1;
 }
 
+//optimal
+//TC O(n) n = nums.size()
+//SC O(1)
+int singleNumberOptimal(vector<int> &nums){
+    int Xor = 0;
+    for(int i = 0;i <nums.size();i++){
+        Xor = Xor^nums[i];
+    }
+    
+    return Xor;
+}
+
+
 int main(){
     int n;
     cin >> n;
@@ -30,6 +43,7 @@ int main(){
         cin >> x;
         nums.push_back(x);
     }
-    int ans = singleNumber(nums);
+    //int ans = singleNumber(nums);
+    int ans = singleNumberOptimal(nums);
     cout << ans;
 }
