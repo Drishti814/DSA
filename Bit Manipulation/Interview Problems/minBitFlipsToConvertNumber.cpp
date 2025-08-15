@@ -12,6 +12,7 @@ int numOfSetBits(int n){
     return cnt;
 }
 
+//TC O(number of set bits)
 int minBitFlips(int start, int goal){
     int ans = start^goal;
     int cnt = numOfSetBits(ans);
