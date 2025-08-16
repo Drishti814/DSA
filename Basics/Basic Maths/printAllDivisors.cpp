@@ -17,7 +17,7 @@ int main(){
     //overall - O(nlogn+sqrt(n) but factors in sqrt(n) time)
     //O(sqrt(n))
     vector<int> ls;
-    for(int i = 1;i<=sqrt(num);i++){
+    for(int i = 1;i*i<=num;i++){    //i<=sqrt(num) it takes more time
         if(num % i == 0){
             ls.push_back(i);
             if(num/i != i){
