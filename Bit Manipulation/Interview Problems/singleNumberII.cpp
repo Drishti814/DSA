@@ -50,6 +50,20 @@ int singleNumberOptimal(vector<int> &nums){
     return nums[n-1];
 }
 
+//most optimal
+//TC O(n) n = nums.size()
+//SC O(1)
+int singleNumberMostOptimal(vector<int> &nums){
+    int n = nums.size();
+    int ones = 0;
+    int twos = 0;
+    for(int i = 0;i<n;i++){
+        ones = ((ones^nums[i])&(~twos));
+        twos = ((twos^nums[i])&(~ones));
+    }
+    return ones;
+}
+
 int main(){
     int n;
     cin >> n;
@@ -61,6 +75,7 @@ int main(){
     }
     //int ans = singleNumber(nums);
     //int ans = singleNumberBetter(nums);
-    int ans = singleNumberOptimal(nums);
+    //int ans = singleNumberOptimal(nums);
+    int ans = singleNumberMostOptimal(nums);
     cout << ans;
 }
