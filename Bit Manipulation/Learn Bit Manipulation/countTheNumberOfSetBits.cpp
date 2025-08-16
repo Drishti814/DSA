@@ -23,10 +23,20 @@ int numOfSetBits(int n){
     return cnt;
 }
 
+//TC O(32)
+int setBitCount(int n){
+    int cnt = 0;
+    for(int i = 0;i<32;i++){
+        if(n&(1<<i)) cnt++;
+    }
+    return cnt;
+}
+
 int main(){
     int n;
     cin >> n;
-    int ans = numberOfSetBits(n);
+    //int ans = numberOfSetBits(n);
     //int ans = numOfSetBits(n);
+    int ans = setBitCount(n);
     cout << ans;
 }
