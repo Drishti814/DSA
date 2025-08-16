@@ -1,1 +1,1 @@
-This is not a prime number.
+0.25
