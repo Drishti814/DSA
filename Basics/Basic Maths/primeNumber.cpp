@@ -30,6 +30,7 @@ int main(){
             if(num/i != i){
                 count+=1;
             }
+            if(count > 2) break;
         }
     }
     if(count == 2){
