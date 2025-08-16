@@ -9,17 +9,17 @@ int main(){
     cin >> num;
     int count = 0;
     //O(n) - brute force approach
-    for(int n = 1;n<=num;n++){
-        if(num % n == 0){
-            count+=1;
-        }
-    }
-    if(count == 2){
-        cout << "This is a prime number." << endl;
-    }
-    else{
-        cout << "This is not a prime number." << endl;
-    }
+    // for(int n = 1;n<=num;n++){
+    //     if(num % n == 0){
+    //         count+=1;
+    //     }
+    // }
+    // if(count == 2){
+    //     cout << "This is a prime number." << endl;
+    // }
+    // else{
+    //     cout << "This is not a prime number." << endl;
+    // }
 
     //optimal approach
     //overall - O(nlogn+sqrt(n) but factors in sqrt(n) time)
