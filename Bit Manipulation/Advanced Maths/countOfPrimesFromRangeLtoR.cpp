@@ -67,6 +67,8 @@ void solveBetter(vector<pair<int,int>> &queries){
     }
 }
 
+//optimal
+//TC O(10^6*log(log(10^6))+10^6+Q)
 void solveOptimal(vector<pair<int,int>> &queries){
     int N = 1e6;
     vector<int> prime = getSieve(N);
