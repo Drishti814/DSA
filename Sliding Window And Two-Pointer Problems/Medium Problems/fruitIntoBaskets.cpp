@@ -4,8 +4,6 @@
 #include<map>
 using namespace std;
 
-//max consecutive ones with k zero bits that can be shifted to one
-
 //brute force
 //TC O(N^2)
 //SC O(3)
