@@ -4,6 +4,8 @@
 #include<algorithm>
 using namespace std;
 
+//TC O(Nlog(logN)+Q*logN)
+//SC O(N)
 void primeFactorization(vector<int> &queries){
     int N = 1e5;
     int q = queries.size();
