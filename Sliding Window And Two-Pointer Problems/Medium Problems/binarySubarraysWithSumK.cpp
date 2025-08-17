@@ -54,9 +54,8 @@ int countBinarySubarrayOptimal(vector<int> &a, int n, long long k){
 }
 
 //most optimal 
-//TC O(nlogn) map
-//TC O(n*1) if unordered map O(n*n) worst case umap
-//SC O(n)
+//TC O(2n)
+//SC O(1)
 int countBinarySubarrayMostOptimalReturn(vector<int> &a, int n, long long k){
     if(k<0) return 0;
     int l = 0;
