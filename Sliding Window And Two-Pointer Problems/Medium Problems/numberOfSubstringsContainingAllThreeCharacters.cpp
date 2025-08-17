@@ -42,8 +42,8 @@ int numOfSubstringsBetter(string s, int k){
 } 
 
 //optimal
-//TC O(N+log(256))
-//SC O(256)
+//TC O(N)
+//SC O(1)
 int numOfSubstringsOptimal(string s, int k){
     int n = s.size();
     vector<int> lastSeen(3,-1);
