@@ -10,7 +10,7 @@ int assignCookies(vector<int> &greed, vector<int> &cookies){
     sort(cookies.begin(),cookies.end());
     int l = 0;
     int r = 0;
-    while(r<cookies.size()){
+    while(l<greed.size() && r<cookies.size()){
         if(greed[l]<=cookies[r]){
             l++;
         }
