@@ -4,6 +4,8 @@
 #include<climits>
 using namespace std;
 
+//TC O(val)
+//SC O(1)
 vector<int> findMin(vector<int> &coins,int val){
     int n = coins.size();
     vector<int> ans;
