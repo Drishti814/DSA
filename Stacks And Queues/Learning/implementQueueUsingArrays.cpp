@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//fixed size
+//fixed size - O(size) or O(N)
 
 class Queue{
 
@@ -21,7 +21,7 @@ class Queue{
         }
     
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     void push(int x){
         if(currSize==size){
             cout << " Queue Full";
@@ -39,7 +39,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Top(){
         if(currSize==0){
             cout << " queue empty";
@@ -49,7 +49,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int pop(){
         if(currSize==0){
             cout << " Queue Empty";
@@ -68,7 +68,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Size(){
         return currSize;
     }

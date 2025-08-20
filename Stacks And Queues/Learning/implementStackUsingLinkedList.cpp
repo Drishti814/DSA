@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//size not fixed
+//size not fixed - O(N) dynamic space
 
 class Node{     
     public: 
@@ -33,7 +33,7 @@ class Stack{
         }
     
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     void push(int x){
         Node* temp = new Node(x);
         temp->next = top;
@@ -42,13 +42,13 @@ class Stack{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Top(){
         return top->data;
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int pop(){
         if (top == nullptr) {
             cout << "Stack Underflow" << endl;
@@ -63,7 +63,7 @@ class Stack{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Size(){
         return size;
     }

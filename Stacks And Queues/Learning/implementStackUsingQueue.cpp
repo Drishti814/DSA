@@ -11,7 +11,7 @@ class Stack{
         Stack(){
         }
     
-    //TC O(1)
+    //TC O(N)
     //SC O(size)
     void push(int x){
         int size = q.size();

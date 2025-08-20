@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//fixed size
+//fixed size - O(N) or O(size)
 
 class Stack{
 
@@ -17,7 +17,7 @@ class Stack{
         }
     
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     void push(int x){
         if(top==size-1){
             cout << " Stack Overflow";
@@ -28,7 +28,7 @@ class Stack{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Top(){
         if(top==-1){
             cout << " Stack empty";
@@ -38,7 +38,7 @@ class Stack{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int pop(){
         if(top==-1){
             cout << " Stack Underflow";
@@ -50,7 +50,7 @@ class Stack{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Size(){
         return top+1;
     }

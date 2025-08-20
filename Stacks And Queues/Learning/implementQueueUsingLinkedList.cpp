@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-//fixed size
+//not fixed size - O(N) dynamic size
 
 class Node{     
     public: 
@@ -35,7 +35,7 @@ class Queue{
         }
     
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     void push(int x){
         Node* temp = new Node(x);
         if(start==nullptr){
@@ -50,7 +50,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Top(){
         if(start==nullptr){
             cout << " queue empty";
@@ -60,7 +60,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int pop(){
         if(start==nullptr){
             cout << " Queue Empty";
@@ -75,7 +75,7 @@ class Queue{
     }
 
     //TC O(1)
-    //SC O(size)
+    //SC O(1)
     int Size(){
         return size;
     }
