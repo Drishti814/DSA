@@ -1,1 +1,5 @@
-27
+Top of stack is before deleting any element 7
+Size of stack before deleting any element 3
+The element deleted is 7
+Size of stack after deleting an element 2
+Top of stack after deleting an element 3
