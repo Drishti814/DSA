@@ -3,74 +3,81 @@ using namespace std;
 
 //fixed size
 
+class Node{     
+    public: 
+    int data;
+    Node* next;
+
+    public:
+    Node(int data1, Node* next1){
+        data = data1;
+        next = next1;
+    }
+
+    public: 
+    Node(int data1){
+        data = data1;
+        next = nullptr;
+    }
+};
+
 class Queue{
 
     int size;
-    int * arr;
-    int start;
-    int end;
-    int currSize;
+    Node* start;
+    Node* end;
 
     public:
         Queue(){
-            size = 10;
-            arr = new int[size];
-            start = -1;
-            end = -1;
-            currSize = 0;
+            size = 0;
+            start = nullptr;
+            end = nullptr;
         }
     
     //TC O(1)
     //SC O(size)
     void push(int x){
-        if(currSize==size){
-            cout << " Queue Full";
-            return;
+        Node* temp = new Node(x);
+        if(start==nullptr){
+            start = temp;
+            end = temp;
         }
-        if(currSize==0){
-            start = 0;
-            end = 0;
-        } 
         else{
-            end = (end+1)%size;
+            end->next = temp;
+            end = temp;
         }
-        arr[end] = x;
-        currSize++;
+        size++;
     }
 
     //TC O(1)
     //SC O(size)
     int Top(){
-        if(currSize==0){
+        if(start==nullptr){
             cout << " queue empty";
             return -1;
         }
-        return arr[start];
+        return start->data;
     }
 
     //TC O(1)
     //SC O(size)
     int pop(){
-        if(currSize==0){
+        if(start==nullptr){
             cout << " Queue Empty";
             return -1;
         }
-        int el = arr[start];
-        if(currSize==1){
-            start = -1;
-            end = -1;
-        }
-        else{
-            start = (start+1)%size;
-        }
-        currSize--;
+        int el = start->data;
+        Node* temp = start;
+        start = start->next;
+        delete temp;
+        size--;
         return el;
     }
 
     //TC O(1)
     //SC O(size)
     int Size(){
-        return currSize;
+        return size;
     }
 };
 
