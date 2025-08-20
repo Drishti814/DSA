@@ -1,58 +1,71 @@
 #include<iostream>
 using namespace std;
 
-//fixed size
+//size not fixed
+
+class Node{     
+    public: 
+    int data;
+    Node* next;
+
+    public:
+    Node(int data1, Node* next1){
+        data = data1;
+        next = next1;
+    }
+
+    public: 
+    Node(int data1){
+        data = data1;
+        next = nullptr;
+    }
+};
 
 class Stack{
 
     int size;
-    int * arr;
-    int top;
+    Node * top;
 
     public:
         Stack(){
-            top = -1;
-            size = 10;
-            arr = new int[size];
+            top = NULL;
+            size = 0;
         }
     
     //TC O(1)
     //SC O(size)
     void push(int x){
-        if(top==size-1){
-            cout << " Stack Overflow";
-            return;
-        }
-        top++;
-        arr[top] = x;
+        Node* temp = new Node(x);
+        temp->next = top;
+        top = temp;
+        size++;
     }
 
     //TC O(1)
     //SC O(size)
     int Top(){
-        if(top==-1){
-            cout << " Stack empty";
-            return -1;
-        }
-        return arr[top];
+        return top->data;
     }
 
     //TC O(1)
     //SC O(size)
     int pop(){
-        if(top==-1){
-            cout << " Stack Underflow";
+        if (top == nullptr) {
+            cout << "Stack Underflow" << endl;
             return -1;
         }
-        int el = arr[top];
-        top--;
+        int el = top->data;
+        Node* temp = top;
+        top = top->next;
+        delete temp;
+        size--;
         return el;
     }
 
     //TC O(1)
     //SC O(size)
     int Size(){
-        return top+1;
+        return size;
     }
 };
 
