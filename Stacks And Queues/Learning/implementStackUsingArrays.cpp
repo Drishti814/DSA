@@ -13,7 +13,9 @@ class Stack{
             size = 10;
             arr = new int[size];
         }
-
+    
+    //TC O(1)
+    //SC O(size)
     void push(int x){
         if(top==size-1){
             cout << " Stack Overflow";
@@ -23,6 +25,8 @@ class Stack{
         arr[top] = x;
     }
 
+    //TC O(1)
+    //SC O(size)
     int Top(){
         if(top==-1){
             cout << " Stack empty";
@@ -31,6 +35,8 @@ class Stack{
         return arr[top];
     }
 
+    //TC O(1)
+    //SC O(size)
     int pop(){
         if(top==-1){
             cout << " Stack Underflow";
@@ -41,6 +47,8 @@ class Stack{
         return el;
     }
 
+    //TC O(1)
+    //SC O(size)
     int Size(){
         return top+1;
     }
