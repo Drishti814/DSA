@@ -1,5 +1,1 @@
-Top of queue is before deleting any element 6
-Size of queue before deleting any element 3
-The element deleted is 6
-Size of queue after deleting an element 2
-Top of queue after deleting an element 3
+True
