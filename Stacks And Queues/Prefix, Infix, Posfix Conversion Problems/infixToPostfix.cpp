@@ -25,14 +25,16 @@ void infixToPostfix(string s){
             st.push(s[i]);
         }
         else if(s[i]==')'){
-            while(st.top()!='('){
+            while(!st.empty() && (st.top()!='(')){
                 ans += st.top();
                 st.pop();
             }
             st.pop();
         }
         else{
-            while(!st.empty() && (s[i]!='^' && priority(s[i])<= priority(st.top()) || (s[i]=='^' && priority(s[i]) < priority(st.top())))){
+            while(!st.empty() &&
+             ((s[i]!='^' && (priority(s[i])<= priority(st.top()))) ||
+              (s[i]=='^' && priority(s[i]) < priority(st.top())))){
                 ans += st.top();
                 st.pop();
             }
@@ -48,7 +50,7 @@ void infixToPostfix(string s){
 }
 
 int main(){
-    string exp = "(a^b^c)";
+    string exp = "(p+q)*(m-n)";
     cout << "Infix expression: " << exp << endl;
     infixToPostfix(exp);
 }

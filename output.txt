@@ -1,2 +1,2 @@
-Infix expression: (a^b^c)
-Postfix expression: abc^^
+Infix expression: (p+q)*(m-n)
+Postfix expression: pq+mn-*
