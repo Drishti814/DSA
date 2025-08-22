@@ -1,2 +1,2 @@
-min element in the stack is 4
-Min of stack after deleting an element 6
+Infix expression: (a^b^c)
+Postfix expression: abc^^

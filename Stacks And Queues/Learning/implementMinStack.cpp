@@ -89,6 +89,7 @@ public:
 };
 
 int main(){
+    //Stack s;
     MinStack s;
     s.push(6);
     s.push(10);
