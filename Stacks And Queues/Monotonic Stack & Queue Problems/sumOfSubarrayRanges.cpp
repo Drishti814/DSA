@@ -8,17 +8,16 @@ using namespace std;
 //brute force
 //TC O(N^2)
 //SC O(1)
-int sumOfSubarrayRanges(vector<int> & arr){
+long long sumOfSubarrayRanges(vector<int> & arr){
     int n = arr.size();
-    long long mod = (int)(1e9 + 7); 
-    int sum = 0;
+    long long sum = 0;
     for(int i = 0;i<n;i++){
         int mini = arr[i];
         int maxi = arr[i];
         for(int j = i+1;j<n;j++){
             mini = min(mini,arr[j]);
             maxi = max(maxi,arr[j]);
-            sum = (sum+(maxi-mini))%mod;
+            sum = (sum+(maxi-mini));
         }
     }
     return sum;
@@ -45,7 +44,7 @@ vector<int> previousSmallerOrEqualElement(vector<int> & arr){
 
 vector<int> nextSmallerElement(vector<int> & arr){
     int n = arr.size();
-    vector<int> ans(n,-1);
+    vector<int> ans(n,n);
     stack<int> st;
     int i = n-1;
     while(i>=0){
@@ -62,20 +61,19 @@ vector<int> nextSmallerElement(vector<int> & arr){
     return ans;
 }
 
-int sumOfSubarrayMinOptimal(vector<int> & arr){
+long long sumOfSubarrayMinOptimal(vector<int> & arr){
     int n = arr.size();
-    long long mod = (1e9 + 7); 
     long long sum = 0;
     vector<int> nse = nextSmallerElement(arr);
     vector<int> pse = previousSmallerOrEqualElement(arr);
     for(int i = 0;i<n;i++){
         long long left = i-pse[i];
         long long right = nse[i]-i;
-        long long s1 = (left*right)%mod;
-        s1 = (arr[i]*s1)%mod;
-        sum = (sum+s1)%mod;
+        long long s1 = (left*right);
+        s1 = (arr[i]*s1);
+        sum = (sum+s1);
     }
-    return (int)sum;
+    return sum;
 }
 
 vector<int> previousLargerOrEqualElement(vector<int> & arr){
@@ -116,32 +114,32 @@ vector<int> nextLargerElement(vector<int> & arr){
     return ans;
 }
 
-int sumOfSubarrayMaxOptimal(vector<int> & arr){
+long long sumOfSubarrayMaxOptimal(vector<int> & arr){
     int n = arr.size();
-    long long mod = (1e9 + 7); 
     long long sum = 0;
     vector<int> nle = nextLargerElement(arr);
     vector<int> ple = previousLargerOrEqualElement(arr);
     for(int i = 0;i<n;i++){
         long long left = i-ple[i];
         long long right = nle[i]-i;
-        long long s1 = (left*right)%mod;
-        s1 = (arr[i]*s1)%mod;
-        sum = (sum+s1)%mod;
+        long long s1 = (left*right);
+        s1 = (arr[i]*s1);
+        sum = (sum+s1);
     }
-    return (int)sum;
+    return sum;
 }
 
 //optimal
-//TC O(5N)
-//SC O(5N)
-int sumOfSubarrayRangesOptimal(vector<int> & arr){
-    return sumOfSubarrayMaxOptimal(arr)-sumOfSubarrayMinOptimal(arr);
+//TC O(10N)
+//SC O(10N)
+long long sumOfSubarrayRangesOptimal(vector<int>& arr) {
+    long long ans = sumOfSubarrayMaxOptimal(arr) - sumOfSubarrayMinOptimal(arr);
+    return ans;
 }
 
 int main(){
     vector<int> arr = {3,1,2,4};
-    //int ans = sumOfSubarrayRanges(arr);
-    int ans = sumOfSubarrayRangesOptimal(arr);
+    //long long ans = sumOfSubarrayRanges(arr);
+    long long ans = sumOfSubarrayRangesOptimal(arr);
     cout << ans;
 }
