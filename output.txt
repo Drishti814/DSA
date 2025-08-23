@@ -1,2 +1,2 @@
-Prefix expression: *+pq-mn
-Infix expression: ((p+q)*(m-n))
+Postfix expression: ab-de+f*/
+Prefix expression: /-ab*+def

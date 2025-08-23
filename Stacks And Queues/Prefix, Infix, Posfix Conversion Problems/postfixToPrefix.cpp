@@ -11,8 +11,8 @@ int priority(char ch){
 }
 
 //TC O(N+N)
-//SC O(N)
-void postfixToInfix(string s){
+//SC O(N+N)
+void postfixToPrefix(string s){
     int n = s.length();
     int i = 0;
     stack<string> st;
@@ -26,16 +26,16 @@ void postfixToInfix(string s){
             st.pop();
             string t2 = st.top();
             st.pop();
-            string exp = "("+t2+string(1,s[i])+t1+")";
+            string exp = string(1,s[i])+t2+t1;
             st.push(exp);
         }
         i++;
     }
-    cout << "Infix expression: " << st.top() << endl;
+    cout << "Prefix expression: " << st.top() << endl;
 }
 
 int main(){
     string exp = "ab-de+f*/";
     cout << "Postfix expression: " << exp << endl;
-    postfixToInfix(exp);
+    postfixToPrefix(exp);
 }
