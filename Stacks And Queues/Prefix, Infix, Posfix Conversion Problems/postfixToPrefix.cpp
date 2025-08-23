@@ -3,6 +3,8 @@
 #include<stack>
 using namespace std;
 
+//we can to postfix to infix then infix to prefix
+
 int priority(char ch){
     if(ch=='^') return 3;
     else if(ch=='*' || ch=='/') return 2;
@@ -11,7 +13,7 @@ int priority(char ch){
 }
 
 //TC O(N+N)
-//SC O(N+N)
+//SC O(N)
 void postfixToPrefix(string s){
     int n = s.length();
     int i = 0;

@@ -1,2 +1,2 @@
-Postfix expression: ab-de+f*/
-Prefix expression: /-ab*+def
+Prefix expression: *+pq-mn
+Postfix expression: pq+mn-*
