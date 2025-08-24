@@ -5,6 +5,8 @@
 #include<stack>
 using namespace std;
 
+//TC O(2N)
+//SC O(N)
 vector<int> aestroidCollisons(vector<int> & arr){
     int n = arr.size();
     vector<int> st;
