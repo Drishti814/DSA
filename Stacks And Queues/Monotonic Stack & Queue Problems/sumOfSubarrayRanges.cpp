@@ -76,7 +76,7 @@ long long sumOfSubarrayMinOptimal(vector<int> & arr){
     return sum;
 }
 
-vector<int> previousLargerOrEqualElement(vector<int> & arr){
+vector<int> previousGreaterOrEqualElement(vector<int> & arr){
     int n = arr.size();
     vector<int> ans(n,-1);
     stack<int> st;
@@ -95,7 +95,7 @@ vector<int> previousLargerOrEqualElement(vector<int> & arr){
     return ans;
 }
 
-vector<int> nextLargerElement(vector<int> & arr){
+vector<int> nextGreaterElement(vector<int> & arr){
     int n = arr.size();
     vector<int> ans(n,-1);
     stack<int> st;
@@ -117,11 +117,11 @@ vector<int> nextLargerElement(vector<int> & arr){
 long long sumOfSubarrayMaxOptimal(vector<int> & arr){
     int n = arr.size();
     long long sum = 0;
-    vector<int> nle = nextLargerElement(arr);
-    vector<int> ple = previousLargerOrEqualElement(arr);
+    vector<int> nge = nextGreaterElement(arr);
+    vector<int> pge = previousGreaterOrEqualElement(arr);
     for(int i = 0;i<n;i++){
-        long long left = i-ple[i];
-        long long right = nle[i]-i;
+        long long left = i-pge[i];
+        long long right = nge[i]-i;
         long long s1 = (left*right);
         s1 = (arr[i]*s1);
         sum = (sum+s1);
