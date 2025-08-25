@@ -28,6 +28,8 @@ public:
 };
 
 //optimal
+//TC O(2N)
+//SC O(N)
 class StockSpannerOptimal {
 public:
     stack<pair<int,int>> st;
@@ -44,7 +46,7 @@ public:
         while(!st.empty() && st.top().first<=price){
             st.pop();
         }
-        ans = ind - (st.empty()?-1:st.top().second);
+        ans = ind - (st.empty()?-1:st.top().second);    //return ans first or u will lose nge
         st.push({price,ind});
         return ans;
     }
