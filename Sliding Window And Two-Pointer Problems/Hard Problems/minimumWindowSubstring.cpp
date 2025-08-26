@@ -20,8 +20,8 @@ string minWindowSubstring(string s, string t){
         for(int j=i;j<s.size();j++){
             if(hash[s[j]]>0){
                 cnt++;
-                hash[s[j]]--;
             } 
+            hash[s[j]]--;
             if(cnt==t.size()){
                 minLen = min(j-i+1,minLen);
                 sIndex = i;
