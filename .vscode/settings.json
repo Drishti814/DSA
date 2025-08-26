@@ -16,6 +16,12 @@
         "unordered_map": "cpp",
         "istream": "cpp",
         "limits": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "map": "cpp",
+        "unordered_set": "cpp"
     }
 }
