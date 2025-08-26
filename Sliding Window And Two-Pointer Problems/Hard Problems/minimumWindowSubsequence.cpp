@@ -6,7 +6,7 @@
 using namespace std;
 
 //brute force
-//TC O(N^2)     //N = s.size()
+//TC O(N^2*M)     //N = s.size()
 //SC O(1)
 string minWindowSubsequence(string s, string t){
     int minLen = INT_MAX;
@@ -41,33 +41,36 @@ string minWindowSubsequence(string s, string t){
 }
 
 //optimal
-//TC O(2N+M)    //N = s.size(),M = t.size();
-//SC O(256)
-string minWindowSubstringOptimal(string s, string t){
+//TC O(N*M)    //N = s.size(),M = t.size();
+//SC O(1)
+string minWindowSubsequencegOptimal(string s, string t){
     int minLen = INT_MAX;
     int sIndex = -1;
     int l = 0;
     int r = 0;
-    int cnt = 0;
-    vector<int> hash(256,0);
-    for(int i=0;i<t.size();i++){
-            hash[t[i]]++;
-        }
+    int x = 0;
     while(r<s.size()){
-        if(hash[s[r]]>0){
-            cnt++;
-        }
-        hash[s[r]]--;
-        while(cnt == t.size()){
-            if(r-l+1<minLen){
-                minLen = r-l+1;                                      
-                sIndex = l;
+        if(s[r]==t[x]){
+            x++;
+            if(x==t.size()){
+                int end = r;
+                x--;
+                l = r;
+                while(x>=0){
+                    if(s[l]==t[x]){
+                        x--;
+                    }
+                    l--;
+                }
+                l++;
+                int len = end-l+1;
+                if(len<minLen){
+                    minLen = len;
+                    sIndex = l;
+                }
+                r=l;
+                x=0;
             }
-            hash[s[l]]++;
-            if(hash[s[l]]>0){
-                cnt=cnt-1;
-            }
-            l++;
         }
         r++;
     }
@@ -76,8 +79,9 @@ string minWindowSubstringOptimal(string s, string t){
 }
 
 int main(){
-    string s = "abcdebdde";
+    string s = "abbcdebdde";
     string t = "bde";
-    string st = minWindowSubsequence(s,t);
+    //string st = minWindowSubsequence(s,t);
+    string st = minWindowSubsequencegOptimal(s,t);
     cout << st;
 }
