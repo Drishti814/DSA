@@ -80,6 +80,7 @@ public:
 
     int rob(vector<int> & a){
         int n = a.size();
+        if(n==1) return a[0]; 
         vector<int> temp1,temp2;
         for(int i = 0;i<n;i++){
             if(i!=0) temp1.push_back(a[i]);
