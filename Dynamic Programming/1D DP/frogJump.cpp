@@ -32,7 +32,8 @@ public:
         if(ind>1){
             twoStep = fMemo(ind-2,heights,dp) + abs(heights[ind] - heights[ind-2]);
         } 
-        return min(oneStep,twoStep);
+        dp[ind] = min(oneStep,twoStep);
+        return dp[ind];
     }
 
     //memoization solution
