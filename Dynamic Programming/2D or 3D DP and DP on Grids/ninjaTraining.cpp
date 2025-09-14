@@ -120,7 +120,7 @@ int main(){
     Solution s;
     //int ans = s.ninjaTrainingRecursive(n, points);
     //int ans = s.ninjaTrainingMemoization(n, points);
-    int ans = s.ninjaTrainingTabulation(n, points);
-    //int ans = s.ninjaTrainingSpaceOpt(n, points);
+    //int ans = s.ninjaTrainingTabulation(n, points);
+    int ans = s.ninjaTrainingSpaceOpt(n, points);
     cout << ans;
 }
