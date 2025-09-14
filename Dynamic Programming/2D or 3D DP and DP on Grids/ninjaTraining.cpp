@@ -16,10 +16,9 @@ public:
             return maxx;
         }
         int maxi = 0;
-        int point = 0;
         for(int i = 0;i<3;i++){
             if(i!=last){
-                point = points[day][i] + fRecursive(day-1,points,i);
+                int point = points[day][i] + fRecursive(day-1,points,i);
                 maxi = max(maxi,point);
             } 
         }
@@ -64,7 +63,6 @@ public:
     //TC O(12N)
     //TC O(4N)
     int ninjaTrainingTabulation(int n, vector<vector<int>> & points){
-        int last = 3;
         vector<vector<int>> dp(n,vector<int> (4,-1));
         dp[0][0] = max(points[0][1],points[0][2]);
         dp[0][1] = max(points[0][0],points[0][2]);
@@ -122,7 +120,7 @@ int main(){
     Solution s;
     //int ans = s.ninjaTrainingRecursive(n, points);
     //int ans = s.ninjaTrainingMemoization(n, points);
-    //int ans = s.ninjaTrainingTabulation(n, points);
-    int ans = s.ninjaTrainingSpaceOpt(n, points);
+    int ans = s.ninjaTrainingTabulation(n, points);
+    //int ans = s.ninjaTrainingSpaceOpt(n, points);
     cout << ans;
 }
